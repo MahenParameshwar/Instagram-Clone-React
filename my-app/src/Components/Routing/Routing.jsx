@@ -8,7 +8,7 @@ const Routing = () => {
     return(
         <>
             <Route path="/" exact render = {() => <Login/>} />
-            <Route path="/reg" exact render = {() => <Registration/>} />
+            <Route path="/reg" exact render = {(props) => <Registration {...props}/>} />
             <Route path="/home" exact render = {() => <Home/>} />
 
 

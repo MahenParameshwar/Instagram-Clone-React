@@ -10,6 +10,7 @@ class Registration extends Component {
             email: "",
             username: "",
             password: "",
+            checkmail:""
         };
     }
 
@@ -22,25 +23,45 @@ class Registration extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        let { email, username, password } = this.state;
-        let { addUserData } = this.context;
-        let user_id = uuid();
-        let payload = {
-            user_id,
-            email,
-            username,
-            password,
-            following_users: [],
-            avatar_img: "",
-            follower_count: "",
-        };
+        let { email, username, password ,checkmail} = this.state;
+        
+        let { addUserData ,checkEmail} = this.context;
+        let out = checkEmail(email)   //check email already exists or not if exists redirects to login page
+        this.setState({
+            checkmail:out
+        })
 
-        addUserData(payload);
+        // if(ans){
+
+            
+        //     let {history} = this.props;
+            
+        //     history.push("/")
+        // }
+
+        if(!ans){
+            
+            let user_id = uuid();
+            let payload = {
+                user_id,
+                email,
+                username,
+                password,
+                following_users: [],
+                avatar_img: "",
+                follower_count: "",
+            };
+    
+            addUserData(payload); // adding registred user data to our database
+
+        }
+       
         
     };
 
     render() {
-        let { email, username, password } = this.state;
+        let { email, username, password ,checkmail} = this.state;
+        
 
         return (
             <>
@@ -74,6 +95,18 @@ class Registration extends Component {
                     <br />
                     <input type="submit" value="sign up" />
                 </form>
+
+                { 
+                    checkmail && <div> email already exists ! login </div>
+    
+                    
+                    let {history} = this.props
+                    history.push("/")
+                    
+                   
+                    
+                }
+
             </>
         );
     }
