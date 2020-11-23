@@ -11,3 +11,8 @@ ul{
   height: 54px;
   border-bottom: 1px solid rgb(184, 182, 182);
 }
+
+.main_container{
+  width: 975px;
+  padding-left: 20px;
+}
