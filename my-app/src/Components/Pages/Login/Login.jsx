@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect,Link } from "react-router-dom";
 import { DataContext } from "../../Context/DataContextProvider";
 import styles from "./Login.module.css";
 
@@ -88,10 +88,14 @@ class Login extends Component {
                     </div>
                 </div>
 
+                <Link to = "/reg">signup</Link>
+
             </div>
         ) : (
             <Redirect to="/home" />
         );
+
+        
     }
 }
 

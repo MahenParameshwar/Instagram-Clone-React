@@ -14,6 +14,7 @@ class DataContextProvider extends Component{
         }
 
         this.authenticateUser = this.authenticateUser.bind(this);
+        this.addUserData = this.addUserData.bind(this);
     }
 
     authenticateUser(data)
@@ -32,8 +33,43 @@ class DataContextProvider extends Component{
                 })
             }
         }
-          
 
+    }
+
+    addUserData(payload){
+        let {isLoading,error} = this.state;
+        console.log(payload,"data push")
+        let {user_id,email,username,password,avatar_img,follower_count,following_users} = payload
+        // this.setState({
+        //     usersData:[ ...usersData, payload]
+        // })
+
+        this.setState({
+            isLoading:true
+        })
+        axios.post("http://localhost:3000/users",{
+            user_id,
+            email,
+            username,
+            password,
+            avatar_img,
+            follower_count,
+            following_users
+            
+        })
+         .then( (res) => {
+             this.setState({
+                 isLoading:false,
+                 error:false
+             })
+             console.log(res)
+         })
+         .catch( (err) => {
+             this.setState({
+                 error:true,
+                 isLoading:false
+             })
+         })
 
     }
 
@@ -66,8 +102,8 @@ class DataContextProvider extends Component{
 
         let {isAuth,error,isLoading,usersData} = this.state;
         console.log(usersData,"my da")
-        let {authenticateUser} = this
-        let value = {authenticateUser,isAuth, error,isLoading}
+        let {authenticateUser,addUserData} = this
+        let value = {authenticateUser,addUserData,isAuth, error,isLoading}
         return(
             <DataContext.Provider value = {value}>
                 {this.props.children} 
