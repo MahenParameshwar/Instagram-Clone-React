@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Switch,Route } from 'react-router-dom';
 import { Explore, Home, Inbox } from '../Pages';
+import ViewProfile from '../Pages/ViewProfile';
 
 class Routes extends Component {
     render() {
@@ -15,6 +16,9 @@ class Routes extends Component {
 
                     <Route path="/explore" exact
                     render = {()=><Explore />} />
+                    
+                    <Route path="/viewprofile/:user" exact
+                    render = {()=><ViewProfile />} />
                 </Switch>
             </div>
         );

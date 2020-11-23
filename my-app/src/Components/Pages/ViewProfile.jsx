@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class User_Posts extends Component {
+class ViewProfile extends Component {
     render() {
         return (
             <div>
-                
+                My Profile
             </div>
         );
     }
 }
 
-export default User_Posts;
+export default ViewProfile;

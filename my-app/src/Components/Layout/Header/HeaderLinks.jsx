@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink } from "react-router-dom";
 import styles from '../../Styles/Header.module.css'
-import { Avatar } from '../Common';
+import Avatar from '@material-ui/core/Avatar'
+
 const headerLinks = [
     {
         to:"/",
@@ -41,7 +42,14 @@ class HeaderLinks extends Component {
                     <img src="/Images/heart.svg" className={styles.img_link} alt=""/>
                 </li>
                 {/*Avatar Pic */}
-                <li><Avatar/></li>
+                <li>
+                    <Avatar
+                    className={styles.avatar_img}
+            
+                    alt="Mahen"
+                    src="/Images/Avatar.png"
+                    />
+                </li>
             </ul>
         );
     }

@@ -1,18 +1,36 @@
+.App{
+  min-height: 100vh;
+  background-color: #FAFAFA;
+}
+
 ul{
   list-style: none;
 }
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
 .container{
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
 
 .header{
   height: 54px;
-  border-bottom: 1px solid rgb(184, 182, 182);
+  background-color: #fff;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .main_container{
-  width: 975px;
-  padding-left: 20px;
+  max-width: 975px;
+  width: 100%;
+  padding:0 20px;
 }
