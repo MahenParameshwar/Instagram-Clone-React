@@ -36,7 +36,10 @@ class HeaderLinks extends Component {
                         )
                     })
                 }
-
+                {/*Follow Users*/}
+                <li>
+                    <img src="/Images/heart.svg" className={styles.img_link} alt=""/>
+                </li>
                 {/*Avatar Pic */}
                 <li><Avatar/></li>
             </ul>
