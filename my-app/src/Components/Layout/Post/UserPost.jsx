@@ -3,9 +3,12 @@ import styles from '../../Styles/post.module.css'
 import Avatar from '@material-ui/core/Avatar'
 import Comment from './Comment';
 import AddComment from './AddComment';
+import { NavLink } from 'react-router-dom';
 
 class UserPost extends Component {
+    
     render() {
+        const username = "Rock";
         return (
             <div className={styles.post}>
                 <div className={styles.post_header}>
@@ -15,7 +18,12 @@ class UserPost extends Component {
                     src="/Images/avatar"
                     />
                     {/*Post Username */}
-                    <h4>Username</h4>
+                    <NavLink
+                    className={styles.user_profile_link}
+                    to = {`/viewprofile/${username}`}>
+                        <h4>Username</h4>
+                    </NavLink>
+                    
                 </div>
                 <img className={styles.post_img} src="https://i.ytimg.com/vi/D0STjbmtMjY/maxresdefault.jpg" alt=""/>
                 <div className={styles.post_content}>
