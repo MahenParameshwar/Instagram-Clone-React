@@ -39,7 +39,7 @@ class Registration extends Component {
         //     history.push("/")
         // }
 
-        if(!ans){
+        if(!checkmail){
             
             let user_id = uuid();
             let payload = {
@@ -99,12 +99,6 @@ class Registration extends Component {
                 { 
                     checkmail && <div> email already exists ! login </div>
     
-                    
-                    let {history} = this.props
-                    history.push("/")
-                    
-                   
-                    
                 }
 
             </>
