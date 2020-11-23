@@ -1,7 +1,5 @@
 .header_container{
     display: flex;
-    width:975px;
-    padding: 20px;
     align-items: center;
     justify-content: space-between;
     height: inherit;

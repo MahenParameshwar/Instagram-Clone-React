@@ -8,11 +8,11 @@ const headerLinks = [
         img_src:"/Images/home.svg"
     },
     {
-        to:"/Inbox",
+        to:"/inbox",
         img_src : "/Images/send.svg"
     },
     {
-        to:"/Explore",
+        to:"/explore",
         img_src : "/Images/explore.svg"
     }
 ]

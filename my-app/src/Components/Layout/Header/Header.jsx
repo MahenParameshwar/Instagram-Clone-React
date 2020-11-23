@@ -8,7 +8,7 @@ class Header extends Component {
     render() {
         return (
             <header className="container header">
-                <div className={styles.header_container}>
+                <div className = {`${styles.header_container} main_container`}>
                     <div>
                         <NavLink
                         to="/">
