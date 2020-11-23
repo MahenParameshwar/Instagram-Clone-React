@@ -1,0 +1,42 @@
+.header_container{
+    display: flex;
+    width:975px;
+    padding: 20px;
+    align-items: center;
+    justify-content: space-between;
+    height: inherit;
+}
+
+.header_links_container{
+    display: flex;
+    width:198px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header_search_container{
+    position: relative;
+}
+
+.header_search_icon{
+    position: absolute;
+}
+
+.header_search_container > input{
+    width: 215px;
+    height: 20px;
+    padding-left: 20px;
+}
+
+.header_search_icon{
+    height:18px
+}
+
+.avatar_img{
+    height: 25px;
+    border-radius: 50%;
+}
+
+.img_link{
+    height: 25px;
+}
