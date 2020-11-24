@@ -1,0 +1,22 @@
+.home_left_section{
+    max-width: 614px;
+    width: 100%;
+    height: 56px;
+}
+
+.presentation{
+    width: 100%;
+    height: 116px;
+    border: 1px solid rgb(190, 188, 188);
+    border-radius: 2px;
+    margin-bottom: 24px;
+}
+
+.posts_container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(1fr,1fr));
+}
+
+
+

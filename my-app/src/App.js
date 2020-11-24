@@ -1,12 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
-import {Routing} from "./Components/Routing/Routing"
+import { Header } from './Components/Layout';
+import { Routes } from './Components/Routes';
+
 
 function App() {
   return (
     <div className="App">
-      <Routing/>
-      
+
+      <Header />
+      <Routes/>
+
     </div>
   );
 }
