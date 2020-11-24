@@ -9,6 +9,8 @@ class User_Posts extends Component {
     users:[]
   }
 }
+
+
  componentDidMount(){
     axios
     .get(`http://localhost:3004/users`)
@@ -31,15 +33,25 @@ class User_Posts extends Component {
     const {users} = this.state
     
     const userData = users?.find(user=>user.user_id===item.user_id)
-    const {username} = {...userData}
-    console.log(username)
+    const {username,avatar_img} = {...userData}
+    console.log(username,avatar_img)
     return (
-      <div style={{ border: "1px solid black" }}>
-        <div>{username}</div>
+      <div style={{ border: "1px solid black" ,width:"65%",padding:5,margin:10}}>
+        <div style={{display:"flex"}}>
+          <div><img width="30px" src={avatar_img} style={{borderRadius:"50%"}}/></div>
+          <div style={{display:"flex"}}>
+            <div>{username}</div>
+            <div>...</div>
+          </div>
+          </div>
         <div>
-          <img src={item.post_img} alt="" />
+          <img style={{objectFit:"contain",width:"100%"}} src={item.post_img} alt="" />
         </div>
-        <div></div>
+        <div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       </div>
     );
   }

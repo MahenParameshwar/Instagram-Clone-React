@@ -1,0 +1,42 @@
+/* .mainDiv{
+    display: "flex";
+    flex-direction: column;
+} */
+
+.mainDiv{
+
+    
+    width:25%;
+    height:377px;
+    border:1px solid grey;
+    margin:auto;
+    
+}
+
+.mainDiv > div {
+    margin :auto
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    width:60%;
+    margin:auto;
+    background-color:white;
+}
+
+.button{
+    height:25px;
+    margin-top:20px;
+    background-color: paleturquoise;
+    border:none;
+    
+
+}
+
+.input {
+    height:30px;
+    margin-top:10px;
+    background-color: #fafafa;
+
+}

@@ -7,6 +7,7 @@ import { User_Posts } from '../Layout/User_Posts/User_Posts';
 class Home extends Component {
     render() {
         const {getPosts} = this.context
+        console.log(getPosts())
         return (
             <div className="container">
                 <main className="main_container">
