@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Redirect,Link } from "react-router-dom";
 import { DataContext } from "../../Context/DataContextProvider";
 import styles from "./Login.module.css";
+import {Or} from "./OR";
+import {FbIcon} from "./FbIcon"
+import {InstaImg} from "./InstaImg"
 
 class Login extends Component {
     constructor(props) {
@@ -35,12 +38,10 @@ class Login extends Component {
         return isLoading ? (
             <div>...loading pls wait</div>
         ) : !isAuth ? (
+            <>
             <div className={styles.mainDiv}>
-                <img
-                    src="../Images/instagram-logo.jpg"
-                    width="200px"
-                    alt="logo"
-                />
+                <InstaImg/>
+
                 <form className={styles.form} onSubmit={this.handleSubmit}>
                     <div>
                         <input
@@ -77,20 +78,26 @@ class Login extends Component {
                     {error && "something went wrong"}
                 </form>
 
-                <div style={{ display: "flex" ,marginLeft:"80px",marginTop:"20px" }}>
-                    <div>
-                        {" "}
-                        <hr width="100px" />{" "}
-                    </div>
-                    <div>OR </div>
-                    <div>
-                        <hr width="100px" />
-                    </div>
+                <div className = {styles.or}>
+                    <Or/>
+                
                 </div>
 
-                <Link to = "/reg">signup</Link>
+                <div> 
+                    <FbIcon src= "https://www.akaweddings.com.au/wp-content/uploads/2020/02/facebook.png" textColor = "blue"/>
+                </div>
+                <div>forgot password?</div>
+
+                
 
             </div>
+             <div className = {styles.bottomDiv}>
+               <span>Don't have an Account ?</span> <Link to = "/reg">Sign up</Link>
+
+
+             </div>
+            </>
+
         ) : (
             <Redirect to="/home" />
         );

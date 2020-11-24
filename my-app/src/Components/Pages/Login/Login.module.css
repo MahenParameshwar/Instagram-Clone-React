@@ -7,36 +7,61 @@
 
     
     width:25%;
-    height:377px;
     border:1px solid grey;
     margin:auto;
+    margin-top:50px;
+    margin-bottom: 25px;
+    
     
 }
 
-.mainDiv > div {
-    margin :auto
+.mainDiv  > div {
+    margin :auto;
+    margin-top: 10px;
 }
 
 .form{
     display: flex;
     flex-direction: column;
-    width:60%;
-    margin:auto;
+    
+    align-items: center;
     background-color:white;
 }
 
 .button{
     height:25px;
+    width: 220px;
     margin-top:20px;
-    background-color: paleturquoise;
+    background-color: dodgerblue;
     border:none;
+    margin-bottom: 20px;
+    color:white
     
 
 }
 
 .input {
     height:30px;
+    width: 220px;
     margin-top:10px;
     background-color: #fafafa;
+
+}
+
+.or{
+    
+    
+    display:flex;
+    align-items:center;
+    justify-content:center
+    
+}
+
+.bottomDiv{
+    width: 25%;
+    margin:auto;
+    border:1px solid grey;
+    height: 62px;
+    line-height: 62px;
 
 }
