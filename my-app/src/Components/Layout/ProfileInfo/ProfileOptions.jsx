@@ -7,7 +7,7 @@ class ProfileOptions extends Component {
                 <h1>
                     Rock
                 </h1>
-            <button class="btn profile-message-btn">Message</button>
+            <button>Message</button>
             </div>
         );
     }

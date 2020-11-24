@@ -42,3 +42,40 @@ a{
   justify-content: flex-start;
   width: 100%;
 }
+
+
+.more_options .ant-modal-close{
+  display: none;
+}
+
+.more_options .ant-modal-content{
+  border-radius: 20px;
+  width: 400px;
+  text-align: center;
+}
+
+.more_options .ant-modal-body {
+  height: 350px;
+  padding: 0;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.more_options .ant-modal-body > button{
+  flex: 1;
+  border: none;
+  outline:1px solid lightgray;
+  
+}
+
+.more_options .ant-btn{
+  
+  height: 22px;
+  cursor: pointer;
+}
+
+button.ant-btn > img{
+  height: 22px;
+}
