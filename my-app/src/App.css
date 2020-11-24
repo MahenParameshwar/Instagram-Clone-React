@@ -34,3 +34,11 @@ a{
   width: 100%;
   padding:0 20px;
 }
+
+.home_section,.profile_section{
+  padding-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
