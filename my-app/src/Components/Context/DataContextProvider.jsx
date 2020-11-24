@@ -94,7 +94,7 @@ class DataContextProvider extends Component {
         });
 
         axios
-            .post("http://localhost:3000/users", {
+            .post("http://localhost:3004/users", {
                 user_id,
                 email,
                 username,
@@ -125,7 +125,7 @@ class DataContextProvider extends Component {
         });
 
         axios
-            .get("http://localhost:3000/users")
+            .get("http://localhost:3004/users")
 
             .then((res) => {
                 this.setState({

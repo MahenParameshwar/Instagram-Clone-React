@@ -91,28 +91,18 @@ class Login extends Component {
                     <Or/>
                 
                 </div>
-
                 <div> 
                     <FbIcon src= "https://www.akaweddings.com.au/wp-content/uploads/2020/02/facebook.png" textColor = "blue"/>
                 </div>
-
                 <div>
                     forgot password?
                 </div>
 
-                
-
-            </div>
-             <div className = {styles.bottomDiv}>
-               <span>Don't have an Account ?</span>  
-               <Link style = {{color:"dodgerblue"}} to = "/reg">Sign up</Link>
-              
-
-             </div>
-
-            
-
-
+                </div>
+                    <div className = {styles.bottomDiv}>
+                    <span>Don't have an Account ?</span>  
+                    <Link style = {{color:"dodgerblue"}} to = "/reg">Sign up</Link>
+                </div>
             </>
 
         ) : (

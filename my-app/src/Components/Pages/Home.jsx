@@ -1,11 +1,42 @@
 import React, { Component } from 'react';
+import { DataContext } from '../Context/DataContextProvider';
 import { UserPost } from '../Layout/Post';
 import styles from '../Styles/Home.module.css'
-// import { Routes } from '../Routes';
+import axios from 'axios';
 
 
 class Home extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            posts:[],
+        }
+    }
+    
+
+    componentDidMount(){
+    const {loggedUserData} = this.context;
+    const following_users_arr = loggedUserData.following_users;
+    
+    //Posts Array Requests Url
+    const urlArr = following_users_arr
+                    .map((id)=>`http://localhost:3004/posts?user_id=${id}`)
+    
+    const requests = urlArr.map((url) => fetch(url).then((res)=>res.json()));
+    
+    axios.all(requests)
+    .then((res)=>{
+        this.setState({
+            posts:res
+        })
+    })
+
+    }
+
     render() {
+        
+        const {posts} = this.state;
+        
         return (
             <div className="container">
                 <main className="main_container">
@@ -15,9 +46,9 @@ class Home extends Component {
 
                             </div>
                             <div className={styles.posts_container}>
-                                <UserPost />
-                                <UserPost />
-                                <UserPost />
+                                {
+                                    posts.map((items)=>items.map(item=><UserPost {...item} key={item.post_id} />))
+                                }
                             </div>
                         </div>
                         <div className={styles.home_right_section}>
@@ -29,5 +60,7 @@ class Home extends Component {
         );
     }
 }
+
+Home.contextType = DataContext
 
 export default Home;
