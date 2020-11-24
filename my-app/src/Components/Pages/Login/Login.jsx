@@ -36,22 +36,20 @@ class Login extends Component {
         this.setState({
             isFound:found
         })
-        // {!isAuth && <h3>wrong credentials</h3>
-        // console.log("hii")}
-        
+       
 
     }
 
     render() {
         let { isAuth, isLoading , error} = this.context;
         let { email, password,isFound } = this.state;
-        console.log(error)
+        console.log(error,isFound,"AYO");
         return isLoading ? (
             <div>...loading pls wait</div>
         ) : !isAuth ? (
             <>
             <div className={styles.mainDiv}>
-                <InstaImg/>
+                <div><InstaImg/></div>
 
                 <form className={styles.form} onSubmit={this.handleSubmit}>
                     <div>
@@ -99,14 +97,18 @@ class Login extends Component {
                 <div> 
                     <FbIcon src= "https://www.akaweddings.com.au/wp-content/uploads/2020/02/facebook.png" textColor = "blue"/>
                 </div>
-                <div>forgot password?</div>
+
+                <div>
+                    forgot password?
+                </div>
 
                 
 
             </div>
              <div className = {styles.bottomDiv}>
-               <span>Don't have an Account ?</span> <Link to = "/reg">Sign up</Link>
-
+               <span>Don't have an Account ?</span>  
+               <Link style = {{color:"dodgerblue"}} to = "/reg">Sign up</Link>
+              
 
              </div>
 
@@ -116,7 +118,7 @@ class Login extends Component {
             </>
 
         ) : (
-            <Redirect to="/home" />
+            <Redirect to="/" />
         );
 
         

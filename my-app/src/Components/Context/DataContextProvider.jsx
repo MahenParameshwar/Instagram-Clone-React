@@ -9,7 +9,7 @@ class DataContextProvider extends Component {
             isAuth: false,
             error: false,
             isLoading: false,
-           
+            LoggedUser:[],
             usersData: [],
         };
 
@@ -22,18 +22,16 @@ class DataContextProvider extends Component {
         console.log(data);
         let { email, password } = data;
         let { usersData } = this.state;
+        let auth = false;
         console.log(usersData.length, "length");
         for (let i = 0; i < usersData.length ; i++) {
-            
-            if (usersData[i].email === email && usersData[i].password === password) 
-            {
-               
+            console.log(usersData[i])
+            if (usersData[i].email === email && usersData[i].password === password) {
                     this.setState({
                         isAuth: true
                     }); 
-                    return   true    
-                 
-                
+                    auth = true   
+                    break  
             }
 
             else{
@@ -42,11 +40,12 @@ class DataContextProvider extends Component {
                     this.setState({
                         error: true
                     }); 
-                    return  true 
+                    auth = true;
+                    break 
                 }
             }
         }
-        return false
+        return auth
     }
 
     checkEmail(email)
@@ -77,6 +76,7 @@ class DataContextProvider extends Component {
             user_id,
             email,
             username,
+            fullName,
             password,
             avatar_img,
             follower_count,
@@ -94,6 +94,7 @@ class DataContextProvider extends Component {
                 user_id,
                 email,
                 username,
+                fullName,
                 password,
                 avatar_img,
                 follower_count,

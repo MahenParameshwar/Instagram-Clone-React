@@ -1,17 +1,33 @@
+import { Component } from 'react';
 import './App.css';
+import { DataContext } from './Components/Context/DataContextProvider';
 import { Header } from './Components/Layout';
 import { Routes } from './Components/Routes';
 
 
-function App() {
-  return (
-    <div className="App">
+class App extends Component {
 
-      <Header />
-      <Routes/>
+  render(){
+    let {isAuth} = this.context;
 
-    </div>
-  );
+    return (
+      <div className="App">
+        
+        { isAuth &&  <Header />}
+          <Routes/>
+          
+
+        
+        
+  
+      </div>
+    );
+
+  }
+ 
 }
+
+
+App.contextType = DataContext;
 
 export default App;

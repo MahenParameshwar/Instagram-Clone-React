@@ -59,6 +59,7 @@ class Registration extends Component {
             console.log(checkmail,"W");
             let {history} = this.props;
             history.push("/")
+            
 
         }
        
@@ -67,14 +68,17 @@ class Registration extends Component {
 
     render() {
         let { email, username, password ,checkmail,fullName} = this.state;
-        
 
-        return (
-            <>
+        let { isAuth } = this.context;
+        
+        return ( !isAuth &&
+            <>  
                 <div className = {styles.mainDiv}>
                     
                     <InstaImg/>
                     <Header/>
+                    
+                    
                     <FbIcon textColor = "white" color = "dodgerblue" src = "https://www.blindsource.com/images/icons/facebook-icon.jpg"/>
                     <div className = {styles.or}>
                        <Or/>
@@ -132,11 +136,15 @@ class Registration extends Component {
                 </div>
 
                 <div className = {styles.bottomDiv}>
-                    <span> have an Account ?</span> <Link to = "/">Log in</Link>
+                    <span> have an Account ?</span> <Link style = {{color:"dodgerblue"}}  to = "/login">Log in</Link>
 
 
                 </div>
 
+                
+               
+                    
+                   
                 
             </>
         );

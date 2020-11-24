@@ -9,15 +9,21 @@
     width:25%;
     border:1px solid grey;
     margin:auto;
-    margin-top:50px;
+   
     margin-bottom: 25px;
+    background: white;
+    
     
     
 }
 
 .mainDiv  > div {
-    margin :auto;
+    
     margin-top: 10px;
+    text-align: center;
+    
+    margin:auto;
+    
 }
 
 .form{
@@ -63,5 +69,12 @@
     border:1px solid grey;
     height: 62px;
     line-height: 62px;
+    text-align: center;
+    background: white;
 
 }
+
+.bottomDiv  Link {
+    color: dodgerblue;
+}
+
