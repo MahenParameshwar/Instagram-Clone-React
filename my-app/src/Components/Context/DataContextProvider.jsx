@@ -11,8 +11,11 @@ class DataContextProvider extends Component {
       isLoading: false,
       error: false,
       posts: [],
+      users:[]
     };
     this.getPosts = this.getPosts.bind(this);
+    this.getUsers = this.getUsers.bind(this)
+
 
   }
 
@@ -34,6 +37,24 @@ class DataContextProvider extends Component {
         });
       });
 
+
+      axios
+      .get(`http://localhost:3004/users`)
+      .then((res) => {
+        this.setState({
+          users: [...res.data],
+          isLoading: false,
+          error: false,
+        });
+      })
+      .catch((err) => {
+        this.setState({
+          error: true,
+          isLoading: false,
+        });
+      });
+     
+
  
   }
 
@@ -41,13 +62,19 @@ class DataContextProvider extends Component {
     const { posts } = this.state;
     return posts;
   }
- 
+  getUsers(){
+      const {users} =this.state;
+      return users
+  }
+
 
   render() {
-    const { isAuth, isLoading, error } = this.state;
-    const { getPosts} = this;
+    const { isAuth, isLoading, error ,usersData } = this.state;
+    console.log(usersData)
+    const { getPosts,getUsers} = this;
     const value = {
       getPosts,
+      getUsers,
       isAuth,
       isLoading,
       error,
