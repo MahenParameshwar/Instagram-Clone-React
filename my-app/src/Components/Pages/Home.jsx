@@ -12,7 +12,7 @@ class Home extends Component {
         return (
             <div className="container">
                 <main className="main_container">
-                    <section className={styles.home_section}>
+                    <section className="home_section">
                         <div className={styles.home_left_section}>
                             <div className={styles.presentation}>
                                 {

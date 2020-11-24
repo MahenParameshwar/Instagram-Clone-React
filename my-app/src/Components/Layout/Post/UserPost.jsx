@@ -43,7 +43,7 @@ class UserPost extends Component {
         const {item} = this.props
         const {users} = this.state  
         const userData = users?.find(user=>user.user_id===item.user_id)
-        const {username,avatar_img} = {...userData}
+        const {username,avatar_img,user_id} = {...userData}
         console.log(username)
         //const username = "Rock";
         return (
@@ -56,8 +56,9 @@ class UserPost extends Component {
                     />
                     
                     <NavLink
+                    id={user_id}
                     className={styles.user_profile_link}
-                    to = {`/viewprofile/${username}`}>
+                    to = {`/viewprofile/${user_id}`}>
                         <h4>{username}</h4>
                     </NavLink>
 

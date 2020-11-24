@@ -20,7 +20,7 @@ class Routes extends Component {
                     render = {()=><Explore />} />
                     
                     <Route path="/viewprofile/:user" exact
-                    render = {()=><ViewProfile />} />
+                    render = {(props)=><ViewProfile  {...props}/>} />
                 </Switch>
             </div>
         );
