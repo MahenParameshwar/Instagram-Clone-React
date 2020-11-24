@@ -1,5 +1,7 @@
 import Avatar from '@material-ui/core/Avatar'
 import React, { Component } from 'react';
+import { GalleryItem } from '../Layout/Gallery';
+import { ProfileBio, ProfileOptions, ProfileStats } from '../Layout/ProfileInfo';
 import styles from '../Styles/viewprofile.module.css'
 
 class ViewProfile extends Component {
@@ -20,42 +22,9 @@ class ViewProfile extends Component {
                                 </div>
                                 
                                 <div className={styles.profile_header_content}>
-                                    <div className={styles.profile_user_settings}>
-                                        <h1>
-                                            Rock
-                                        </h1>
-                                        <button class="btn profile-message-btn">Message</button>
-                                    </div>
-                                    
-                                    <div className={styles.profile_stats}>
-                                        <ul>
-                                            <li>
-                                                <span className={styles.stat_count}>
-                                                    785 
-                                                </span> posts
-                                            </li>
-                                            <li>
-                                                <span className={styles.stat_count}>
-                                                    188  
-                                                </span> followers
-                                            </li>
-                                            <li>
-                                                <span className={styles.stat_count}>
-                                                    206  
-                                                </span> following
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div className={styles.profile_bio}>
-                                        <h4 className={styles.profile_real_name}>
-                                            Rock
-                                        </h4>
-                                        <p>
-                                        Welcome to my Instagram. These images will be posted without explanation, for your interpretation. Enjoy.
-                                        </p>
-                                    </div>
-
+                                    <ProfileOptions />
+                                    <ProfileStats />
+                                    <ProfileBio />
                                 </div>
                                 
                             </div>
@@ -66,77 +35,9 @@ class ViewProfile extends Component {
                             <div className={styles.profile_body_container}>
                                 <div className={styles.gallery}>
 
-                                    <div className={styles.gallery_item}>
-                                        <img 
-                                        src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop"
-                                        className={styles.gallery_img} alt="gallery-pic" />
-                                        <div className={styles.gallery_item_info}>
-                                            <ul>
-                                                <li class="gallery-item-likes">
-                                                    <span class="visually-hidden">
-                                                        Likes:
-                                                    </span>
-                                                    <i class="fas fa-heart" aria-hidden="true"></i> 
-                                                    89
-                                                </li>
-                                                <li class="gallery-item-comments">
-                                                    <span class="visually-hidden">
-                                                        Comments:
-                                                    </span>
-                                                    <i class="fas fa-comment" aria-hidden="true"></i> 
-                                                    5
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div className={styles.gallery_item}>
-                                        <img 
-                                        src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop"
-                                        className={styles.gallery_img} alt="gallery-pic" />
-                                        <div className={styles.gallery_item_info}>
-                                            <ul>
-                                                <li class="gallery-item-likes">
-                                                    <span class="visually-hidden">
-                                                        Likes:
-                                                    </span>
-                                                    <i class="fas fa-heart" aria-hidden="true"></i> 
-                                                    89
-                                                </li>
-                                                <li class="gallery-item-comments">
-                                                    <span class="visually-hidden">
-                                                        Comments:
-                                                    </span>
-                                                    <i class="fas fa-comment" aria-hidden="true"></i> 
-                                                    5
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div className={styles.gallery_item}>
-                                        <img 
-                                        src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop"
-                                        className={styles.gallery_img} alt="gallery-pic" />
-                                        <div className={styles.gallery_item_info}>
-                                            <ul>
-                                                <li class="gallery-item-likes">
-                                                    <span class="visually-hidden">
-                                                        Likes:
-                                                    </span>
-                                                    <i class="fas fa-heart" aria-hidden="true"></i> 
-                                                    89
-                                                </li>
-                                                <li class="gallery-item-comments">
-                                                    <span class="visually-hidden">
-                                                        Comments:
-                                                    </span>
-                                                    <i class="fas fa-comment" aria-hidden="true"></i> 
-                                                    5
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                    <GalleryItem />
+                                    <GalleryItem />
+                                    <GalleryItem />
 
                                 </div>
                             </div>
