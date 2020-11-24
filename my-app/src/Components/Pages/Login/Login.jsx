@@ -13,6 +13,7 @@ class Login extends Component {
         this.state = {
             email: "",
             password: "",
+            isFound:true
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,14 +28,24 @@ class Login extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        let { email, password } = this.state;
-        let { authenticateUser } = this.context;
-        authenticateUser({ email, password });
+    
+        let { email, password,isFound } = this.state;
+        let { authenticateUser,isAuth } = this.context;
+        let found = authenticateUser({ email, password });
+        console.log(found,"found")
+        this.setState({
+            isFound:found
+        })
+        // {!isAuth && <h3>wrong credentials</h3>
+        // console.log("hii")}
+        
+
     }
 
     render() {
         let { isAuth, isLoading , error} = this.context;
-        let { email, password } = this.state;
+        let { email, password,isFound } = this.state;
+        console.log(error)
         return isLoading ? (
             <div>...loading pls wait</div>
         ) : !isAuth ? (
@@ -75,8 +86,10 @@ class Login extends Component {
                             }
                         />{" "}
                     </div>
-                    {error && "something went wrong"}
+                        { error && <div style = {{color:"red"}}> wrong password</div> }
+                        { !isFound &&  <div style = {{color:"red"}}>user doesnot exists,pls register</div>}
                 </form>
+            
 
                 <div className = {styles.or}>
                     <Or/>
@@ -96,6 +109,10 @@ class Login extends Component {
 
 
              </div>
+
+            
+
+
             </>
 
         ) : (

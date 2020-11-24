@@ -23,22 +23,30 @@ class DataContextProvider extends Component {
         let { email, password } = data;
         let { usersData } = this.state;
         console.log(usersData.length, "length");
-        for (let i = 0; i < usersData.length - 1; i++) {
-            console.log(i);
-            console.log(usersData[i].email, usersData[i].password);
-            if (
-                usersData[i].email === email &&
-                usersData[i].password === password
-            ) {
-                console.log(
-                    usersData[i].email === email &&
-                        usersData[i].password === password
-                );
-                this.setState({
-                    isAuth: true,
-                });
+        for (let i = 0; i < usersData.length ; i++) {
+            
+            if (usersData[i].email === email && usersData[i].password === password) 
+            {
+               
+                    this.setState({
+                        isAuth: true
+                    }); 
+                    return   true    
+                 
+                
+            }
+
+            else{
+                if(usersData[i].email === email && usersData[i].password !== password){
+
+                    this.setState({
+                        error: true
+                    }); 
+                    return  true 
+                }
             }
         }
+        return false
     }
 
     checkEmail(email)

@@ -16,7 +16,8 @@ class Registration extends Component {
             email: "",
             username: "",
             password: "",
-            checkmail:false
+            checkmail:false,
+            fullName:""
         };
     }
 
@@ -29,7 +30,7 @@ class Registration extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        let { email, username, password ,checkmail} = this.state;
+        let { email, username, password ,checkmail,fullName} = this.state;
         
         let { addUserData ,checkEmail} = this.context;
         let out = checkEmail(email)   //check email already exists or not if exists redirects to login page
@@ -48,6 +49,7 @@ class Registration extends Component {
                 email,
                 username,
                 password,
+                fullName,
                 following_users: [],
                 avatar_img: "",
                 follower_count: "",
@@ -64,7 +66,7 @@ class Registration extends Component {
     };
 
     render() {
-        let { email, username, password ,checkmail} = this.state;
+        let { email, username, password ,checkmail,fullName} = this.state;
         
 
         return (
@@ -90,6 +92,14 @@ class Registration extends Component {
                     />{" "}
                     <br />
                     <input className = {styles.input}
+                        type="fullName"
+                        value={fullName}
+                        placeholder="fullName"
+                        onChange={this.handleChange}
+                        name="fullName"
+                        required
+                    /><br/>
+                    <input className = {styles.input}
                         type="username"
                         value={username}
                         placeholder="username"
@@ -111,6 +121,12 @@ class Registration extends Component {
                     <input className = {styles.button}
                       type="submit" 
                       value="sign up" />
+                    
+                    { 
+                    checkmail && <div style = {{color:"red"}}>  email already exists ! login </div>
+    
+                }
+
                 </form>
 
                 </div>
@@ -121,11 +137,7 @@ class Registration extends Component {
 
                 </div>
 
-                { 
-                    checkmail && <div> email already exists ! login </div>
-    
-                }
-
+                
             </>
         );
     }
