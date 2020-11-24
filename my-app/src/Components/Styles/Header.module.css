@@ -20,6 +20,7 @@
     width: 222px;
     justify-content: space-between;
     height: 25px;
+    margin: 0;
 }
 
 .img_link{
@@ -45,9 +46,11 @@
     width: 222px;
 }
 
-li .avatar_img{
-    height: 25px;
-    width: 25px;
+
+button .avatar_img{
+    margin-left: 20px;
+    height: 28px;
+    width: 28px;
 }
 
 @media screen and (max-width:600px){

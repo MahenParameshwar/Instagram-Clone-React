@@ -9,11 +9,11 @@ class GalleryItem extends Component {
                 className={styles.gallery_img} alt="gallery-pic" />
                 <div className={styles.gallery_item_info}>
                     <ul>
-                        <li class="gallery-item-likes">
-                            <i class="fas fa-heart" aria-hidden="true"></i> 89
+                        <li className="gallery-item-likes">
+                            <i className="fas fa-heart" aria-hidden="true"></i> 89
                         </li>
-                        <li class="gallery-item-comments">
-                            <i class="fas fa-comment" aria-hidden="true"></i> 5
+                        <li className="gallery-item-comments">
+                            <i className="fas fa-comment" aria-hidden="true"></i> 5
                         </li>
                     </ul>
                 </div>

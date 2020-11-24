@@ -21,6 +21,24 @@
     padding: 15px 15px;
 }
 
+.post_header_container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post_header_container > button{
+    height: 50%;
+    outline:none;
+    border: none;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+button.more_button > img {
+    height: 20px;
+}
+
 .post_content{
     padding: 10px 15px;
 }
