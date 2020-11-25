@@ -9,8 +9,9 @@
     height: 116px;
     border: 1px solid rgb(190, 188, 188);
     border-radius: 2px;
-    display: flex;
+    margin-bottom: 24px;
     padding: 10px;
+    
 }
 
 .posts_container{

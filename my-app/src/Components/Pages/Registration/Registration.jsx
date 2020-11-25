@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import styles from "../Login/Login.module.css"
 import { v4 as uuid } from "uuid";
 import { DataContext } from "../../Context/DataContextProvider";
