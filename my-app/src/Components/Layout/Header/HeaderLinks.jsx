@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from "react-router-dom";
 import styles from '../../Styles/Header.module.css'
-import Avatar from '@material-ui/core/Avatar'
 
 const headerLinks = [
     {
@@ -20,7 +19,14 @@ const headerLinks = [
 
 
 class HeaderLinks extends Component {
+    constructor(props){
+        super(props)
+        this.state ={
+
+        }
+    }
     render() {
+        
         return (
             <ul className={styles.header_links_container}>
                 {
@@ -42,14 +48,6 @@ class HeaderLinks extends Component {
                     <img src="/Images/heart.svg" className={styles.img_link} alt=""/>
                 </li>
                 {/*Avatar Pic */}
-                <li>
-                    <Avatar
-                    className={styles.avatar_img}
-            
-                    alt="Mahen"
-                    src="/Images/Avatar.png"
-                    />
-                </li>
             </ul>
         );
     }

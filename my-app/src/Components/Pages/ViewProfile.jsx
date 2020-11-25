@@ -1,51 +1,73 @@
 import Avatar from '@material-ui/core/Avatar'
 import React, { Component } from 'react';
-import { matchPath } from 'react-router-dom';
+import { getPosts,getProfile } from '../../Services';
 import { DataContext } from '../Context/DataContextProvider';
 import { GalleryItem } from '../Layout/Gallery';
 import { ProfileBio, ProfileOptions, ProfileStats } from '../Layout/ProfileInfo';
 import styles from '../Styles/viewprofile.module.css'
 
 class ViewProfile extends Component {
-  constructor(props){
-    super(props)
 
-  }
-  
+    constructor(props) {
+        super(props);
+        this.state = {
+            profileData:null,
+            posts : []
+        }
+    }
+    
+
+    async componentDidMount(){
+
+        const {user} = this.props.match.params;
+        const profileData = await getProfile(`http://localhost:3004/users?username=${user}`);
+        
+        const posts = await getPosts(`http://localhost:3004/posts?username=${user}`)
+        this.setState({
+            profileData:profileData[0],
+            posts:posts
+        })
+    }
+
     render() {
-      const {user}=this.props.match.params
+        const {profileData,posts} = this.state
+        console.log(this.state)
         return (
             <div className="container">
                 <main className="main_container">
                     <section className={styles.profile_section}>
                         <div className={styles.profile_header}>
-                            
+                            {
+                            profileData ?
                             <div className={styles.profile_header_container}>
                                 <div className={styles.profile_avatar_container}>
                                     <Avatar
                                     className={styles.profile_image} 
-                                    href="JohnCena"
-                                    src="https://hollywoodneuz.net/wp-content/uploads/2013/07/The-Rock-wwe-champion-hd-wallpapers.jpg-e1374313433660.jpeg" 
+                                    href={`${profileData.username}`}
+                                    src={`${profileData.avatar_img}`} 
                                     />
                                 </div>
                                 
                                 <div className={styles.profile_header_content}>
-                                    <ProfileOptions userId={user} />
-                                    <ProfileStats userId={user} />
-                                    <ProfileBio userId={user} />
+                                    <ProfileOptions {...profileData}/>
+                                    <ProfileStats {...profileData} posts={posts.length}/>
+                                    <ProfileBio {...profileData}/>
                                 </div>
                                 
                             </div>
-
+                            : <div>...Loading</div>
+                            } 
                         </div>
 
                         <div className={styles.profile_content}>
                             <div className={styles.profile_body_container}>
                                 <div className={styles.gallery}>
-
-                                    <GalleryItem />
-                                    <GalleryItem />
-                                    <GalleryItem />
+                                    {
+                                        posts.map((post)=>{
+                                            return <GalleryItem key={post.post_id} {...post} />
+                                        })
+                                    }
+                                
 
                                 </div>
                             </div>

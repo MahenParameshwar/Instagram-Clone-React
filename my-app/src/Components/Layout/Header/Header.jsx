@@ -3,9 +3,11 @@ import HeaderLinks from './HeaderLinks';
 import Search from './Search';
 import styles from '../../Styles/Header.module.css'
 import { NavLink } from 'react-router-dom';
+import SimpleMenu from './SimpleMenu';
 
 class Header extends Component {
     render() {
+        
         return (
             <header className="header">
                 <div className = {`${styles.header_container}`}>
@@ -15,7 +17,10 @@ class Header extends Component {
                         
                     </div>
                     <Search />
-                    <HeaderLinks />
+                    <div>
+                        <HeaderLinks />
+                        <SimpleMenu history={this.props.history} />
+                    </div>
                     
                 </div>
             </header>

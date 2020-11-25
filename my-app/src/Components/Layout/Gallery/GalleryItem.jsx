@@ -2,18 +2,22 @@ import React, { Component } from 'react';
 import styles from '../../Styles/viewprofile.module.css'
 class GalleryItem extends Component {
     render() {
+        const {comment_count,likes,post_img} = this.props;
         return (
-            <div className={styles.gallery_item}>
-                <img 
-                src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop"
-                className={styles.gallery_img} alt="gallery-pic" />
+            <div className={styles.gallery_item}
+            style={{
+                backgroundImage:`url(${post_img})`,
+                backgroundSize:"cover"
+            }}
+            >
+                
                 <div className={styles.gallery_item_info}>
                     <ul>
-                        <li class="gallery-item-likes">
-                            <i class="fas fa-heart" aria-hidden="true"></i> 89
+                        <li className="gallery-item-likes">
+                            <i className="fas fa-heart" aria-hidden="true"></i> {likes}
                         </li>
-                        <li class="gallery-item-comments">
-                            <i class="fas fa-comment" aria-hidden="true"></i> 5
+                        <li className="gallery-item-comments">
+                            <i className="fas fa-comment" aria-hidden="true"></i> {comment_count}
                         </li>
                     </ul>
                 </div>

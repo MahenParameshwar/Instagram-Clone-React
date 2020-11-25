@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import styles from '../../Styles/post.module.css'
 
 class Comment extends Component {
+    
     render() {
-        const {comment} = this.props
+        const {comment,username} = this.props
         return (
                 <h4 className={styles.post_description}>
-                                <strong>Mahen : </strong>
-                                {comment}
+                                <strong>{`${username}`} : </strong>
+                                {`${comment}`}
                 </h4>
         );
     }

@@ -7,36 +7,45 @@ class AddComment extends Component {
         super(props);
         this.state = {
             disabled:false,
-            postComment:""
+            comment:""
         }
     }
-    handleChange=(e)=>{
-        const {name,value} = e.target
+ 
+    handelChange = (e)=>{
+        const {name,value} = e.target;
         this.setState({
-            [name]:value
+            [name] : value
         })
-
     }
 
-    handleComment = ()=>{
-        const {postComment,disabled} = this.state
+
+    handelSubmit = (e)=>{
+        e.preventDefault();
+        const {comment} = this.state;
+        const {postComment} = this.props;
+        postComment(comment);
         this.setState({
-            postComment:postComment
+            comment:""
         })
-        console.log(postComment)
     }
     
     render() {
-        const {postComment} = this.state
+        const {comment} = this.state
         return (
-            <div className={styles.add_comment_container}>
-                <input type="text" name="postComment" value={postComment} placeholder="Add a comment" onChange={this.handleChange}/>
-                <button
-                onClick = {this.handleComment}
-                className={styles.add_comment_btn}
-                >Post
-                </button>
-                <Comment comment={postComment}/>
+            <div>
+                <form onSubmit={this.handelSubmit} className={styles.add_comment_container}>
+                    <input type="text"
+                    placeholder="Add a comment"
+                    onChange={this.handelChange}
+                    name='comment'
+                    value = {comment}
+                    />
+                    <button type="submit"
+                    className={styles.add_comment_btn}>
+                        Post
+                    </button>
+                </form>
+                
             </div>
         );
     }

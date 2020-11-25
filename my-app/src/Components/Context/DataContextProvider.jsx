@@ -1,90 +1,158 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-const DataContext = React.createContext();
-
+export let DataContext = React.createContext();
 class DataContextProvider extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isAuth: false,
-      isLoading: false,
-      error: false,
-      posts: [],
-      users:[]
-    };
-    this.getPosts = this.getPosts.bind(this);
-    this.getUsers = this.getUsers.bind(this)
+    constructor(props) {
+        super(props);
+        this.state = {
+            isAuth: false,
+            error: false,
+            isLoading: false,
+            //change LoggedUser to logedUserData
+            loggedUser:null,
+            //Registerd users Data
+            usersData: null,
+            //loged-in user id
+            currentUserData:null
+        };
 
+        this.authenticateUser = this.authenticateUser.bind(this);
+        this.addUserData = this.addUserData.bind(this);
+        this.checkEmail = this.checkEmail.bind(this);
+    }
 
-  }
+    authenticateUser(data) {
+        let { email, password } = data;
+        let { usersData } = this.state;
+        let auth = false;
 
-  componentDidMount() {
-    this.setState({ isLoading: true });
-    axios
-      .get(`http://localhost:3004/posts`)
-      .then((res) => {
+        for (let i = 0; i < usersData.length ; i++) {
+            
+            if (usersData[i].email === email && usersData[i].password === password) {
+                    this.setState({
+                        isAuth: true,
+                        //add this
+                        loggedUserData:usersData[i]
+                    }); 
+                    auth = true   
+                    break  
+            }
+
+            else{
+                if(usersData[i].email === email && usersData[i].password !== password){
+
+                    this.setState({
+                        error: true
+                    }); 
+                    auth = true;
+                    break 
+                }
+            }
+        }
+        return auth
+    }
+
+    checkEmail(email)
+    {
+        
+        let {usersData} = this.state;
+        //Change length-1 to length
+        for(let i = 0; i < usersData.length; i++)
+        {
+            
+            if(email === usersData[i].email)
+            {
+                return true;
+            }
+            else
+            {
+                continue;
+            }
+        }
+
+        return false;
+        
+    }
+
+    addUserData(payload) {
+        let { isLoading, error } = this.state;
+        let {
+            user_id,
+            email,
+            username,
+            fullName,
+            password,
+            avatar_img,
+            follower_count,
+            following_users,
+        } = payload;
+        
+
         this.setState({
-          posts: [...res.data],
-          isLoading: false,
-          error: false,
+            isLoading: true,
         });
-      })
-      .catch((err) => {
+
+        axios
+            .post("http://localhost:3004/users", {
+                user_id,
+                email,
+                username,
+                fullName,
+                password,
+                avatar_img,
+                follower_count,
+                following_users,
+            })
+            .then((res) => {
+                this.setState({
+                    isLoading: false,
+                    error: false,
+                });
+                console.log(res);
+            })
+            .catch((err) => {
+                this.setState({
+                    error: true,
+                    isLoading: false,
+                });
+            });
+    }
+
+    componentDidMount() {
         this.setState({
-          error: true,
-          isLoading: false,
+            isLoading: false,
         });
-      });
 
+        axios
+            .get("http://localhost:3004/users")
 
-      axios
-      .get(`http://localhost:3004/users`)
-      .then((res) => {
-        this.setState({
-          users: [...res.data],
-          isLoading: false,
-          error: false,
-        });
-      })
-      .catch((err) => {
-        this.setState({
-          error: true,
-          isLoading: false,
-        });
-      });
-     
+            .then((res) => {
+                this.setState({
+                    usersData: res.data,
+                    isLoading: false,
+                });
+            })
 
- 
-  }
+            .catch((err) =>
+                this.setState({
+                    error: true,
+                    isLoading: false,
+                })
+            );
+    }
 
-  getPosts() {
-    const { posts } = this.state;
-    return posts;
-  }
-  getUsers(){
-      const {users} =this.state;
-      return users
-  }
-
-
-  render() {
-    const { isAuth, isLoading, error ,usersData } = this.state;
-    console.log(usersData)
-    const { getPosts,getUsers} = this;
-    const value = {
-      getPosts,
-      getUsers,
-      isAuth,
-      isLoading,
-      error,
-    };
-    return (
-      <DataContext.Provider value={value}>
-        {this.props.children}
-      </DataContext.Provider>
-    );
-  }
+    render() {
+        //remove userdata and add logedUserData
+        let { isAuth, error, isLoading,regUser,loggedUserData} = this.state;
+        let { authenticateUser, addUserData ,checkEmail} = this;
+        let value = { authenticateUser, addUserData,checkEmail, isAuth, error, isLoading,regUser ,loggedUserData};
+        return (
+            <DataContext.Provider value={value}>
+                {this.props.children}
+            </DataContext.Provider>
+        );
+    }
 }
 
-export { DataContext, DataContextProvider };
+export { DataContextProvider };

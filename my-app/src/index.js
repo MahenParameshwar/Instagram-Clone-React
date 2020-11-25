@@ -3,7 +3,8 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-import { DataContextProvider } from './Components/Context/DataContextProvider';
+import {DataContextProvider} from "./Components/Context/DataContextProvider"
+
 
 
 ReactDOM.render(
@@ -11,8 +12,8 @@ ReactDOM.render(
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </DataContextProvider>,
-  document.getElementById("root")
+  </ DataContextProvider>,
+  document.getElementById('root')
 );
 
 
