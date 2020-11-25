@@ -44,6 +44,7 @@ class ViewProfile extends Component {
     render() {
         const {profileData,posts,currUser} = this.state
         const {user} = this.props.match.params;
+        //Logic to render you profile when you are in other profile and you want to view ypur profile
         if(user !== currUser){
             this.updateUser();
         }
