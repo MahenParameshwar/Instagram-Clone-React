@@ -73,79 +73,101 @@ class Registration extends Component {
         
         return ( !isAuth &&
             <>  
-                <div className = {styles.mainDiv}>
+              <div className = {styles.wrapper}>
+                <div className = {styles.maincontent}>
                     
-                    <InstaImg/>
+                    <div className = {styles.header}>
+                      <InstaImg/>
+
+                    </div>
+                    
                     <Header/>
                     
-                    
+                    <div>
                     <FbIcon textColor = "white" color = "dodgerblue" src = "https://www.blindsource.com/images/icons/facebook-icon.jpg"/>
+                    </div>
+
                     <div className = {styles.or}>
                        <Or/>
                 
                     </div>
 
-                <form className ={styles.form}  onSubmit={this.handleSubmit}>
-                    <input className = {styles.input}
-                        type="email"
-                        value={email}
-                        placeholder="email"
-                        onChange={this.handleChange}
-                        name="email"
-                        required
-                    />{" "}
-                    <br />
-                    <input className = {styles.input}
-                        type="fullName"
-                        value={fullName}
-                        placeholder="fullName"
-                        onChange={this.handleChange}
-                        name="fullName"
-                        required
-                    /><br/>
-                    <input className = {styles.input}
-                        type="username"
-                        value={username}
-                        placeholder="username"
-                        onChange={this.handleChange}
-                        name="username"
-                        required
-                    />{" "}
-                    <br />
+                <form   onSubmit={this.handleSubmit}>
+                    <div>
+                        <input className = {styles.input1}
+                            type="email"
+                            value={email}
+                            placeholder="email"
+                            onChange={this.handleChange}
+                            name="email"
+                            required
+                        />{" "}
+                    </div>
+                    
+                    <div>
+                        <input className = {styles.input2}
+                            type="fullName"
+                            value={fullName}
+                            placeholder="fullName"
+                            onChange={this.handleChange}
+                            name="fullName"
+                            required
+                        />
 
-                    <input  className = {styles.input}
-                        type="password"
-                        value={password}
-                        placeholder="password"
-                        onChange={this.handleChange}
-                        name="password"
-                        required
-                    />{" "}
-                    <br />
-                    <input className = {styles.button}
-                      type="submit" 
-                      value="sign up" />
+                    </div>
+
+                    <div>
+                        <input className = {styles.input3}
+                            type="username"
+                            value={username}
+                            placeholder="username"
+                            onChange={this.handleChange}
+                            name="username"
+                            required
+                        />
+                    
+
+                    </div>
+                    
+                    <div>
+                        <input  className = {styles.input4}
+                            type="password"
+                            value={password}
+                            placeholder="password"
+                            onChange={this.handleChange}
+                            name="password"
+                            required
+                        />
+                    
+
+                    </div>
+
+                    <div>
+                        <input className = {styles.btn}
+                        type="submit" 
+                        value="sign up" />
+
+                    </div>
+                   
                     
                     { 
-                    checkmail && <div style = {{color:"red"}}>  email already exists ! login </div>
+                       checkmail && <div style = {{color:"red"}}>  email already exists ! login </div>
     
-                }
+                     }
 
                 </form>
 
                 </div>
-
-                <div className = {styles.bottomDiv}>
-                    <span> have an Account ?</span> <Link style = {{color:"dodgerblue"}}  to = "/login">Log in</Link>
-
+                    
+                <div className = {styles.subcontent}>
+                    <div className = {styles.spart}>
+                        have an Account ? <Link style = {{color:"dodgerblue"}}  to = "/login">Log in</Link>
+                    </div>
 
                 </div>
-
-                
                
-                    
-                   
-                
+
+              </div>  
             </>
         );
     }

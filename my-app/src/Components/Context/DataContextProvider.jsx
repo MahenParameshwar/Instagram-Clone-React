@@ -9,7 +9,7 @@ class DataContextProvider extends Component {
             isAuth: false,
             error: false,
             isLoading: false,
-            LoggedUser:[],
+            loggedUserData:[],
             usersData: [],
         };
 
@@ -28,7 +28,8 @@ class DataContextProvider extends Component {
             console.log(usersData[i])
             if (usersData[i].email === email && usersData[i].password === password) {
                     this.setState({
-                        isAuth: true
+                        isAuth: true,
+                        loggedUserData:usersData[i]
                     }); 
                     auth = true   
                     break  
@@ -140,7 +141,7 @@ class DataContextProvider extends Component {
 
     render() {
         let { isAuth, error, isLoading, usersData ,regUser} = this.state;
-        console.log(usersData, "my da");
+        //console.log(loggedUserData, "my da");
         let { authenticateUser, addUserData ,checkEmail} = this;
         let value = { authenticateUser, addUserData,checkEmail, isAuth, error, isLoading,regUser };
         return (

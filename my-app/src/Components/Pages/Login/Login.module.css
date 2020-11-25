@@ -3,58 +3,102 @@
     flex-direction: column;
 } */
 
-.mainDiv{
 
-    
-    width:25%;
-    border:1px solid grey;
-    margin:auto;
-   
-    margin-bottom: 25px;
-    background: white;
-    
-    
-    
-}
 
-.mainDiv  > div {
+/* .mainDiv  > div {
     
     margin-top: 10px;
     text-align: center;
     
     margin:auto;
     
-}
+} */
 
-.form{
-    display: flex;
-    flex-direction: column;
-    
-    align-items: center;
-    background-color:white;
-}
 
-.button{
-    height:25px;
-    width: 220px;
-    margin-top:20px;
-    background-color: dodgerblue;
-    border:none;
-    margin-bottom: 20px;
-    color:white
-    
 
-}
+* {
+    margin: 0px;
+    padding: 0px;
+  }
+  
+  body {
+    background-color: #eee;
+  }
+  
+  .wrapper {
+    width: 500px;
+    height: 50%;
+    overflow: hidden;
+    border: 0px solid #000;
+    margin: 50px auto;
+    padding: 10px;
+  }
+  
+  .maincontent {
+    width: 350px;
+    height: 40%;
+    margin: 10px auto;
+    background-color: #fff;
+    border: 2px solid #e6e6e6;
+    padding: 40px 50px;
+  }
 
-.input {
-    height:30px;
-    width: 220px;
-    margin-top:10px;
-    background-color: #fafafa;
+  /* .maincontent div{
+      margin:auto;
+  } */
+  
+  .header {
+    border: 0px solid #000;
+    margin-bottom: 5px;
+  }
+  
+  .header img {
+    height: 50px;
+    width: 175px;
+    margin: auto;
+    position: relative;
+    left: 40px;
+  }
+  
 
-}
+  .input1,
+  .input2,.input3,.input4 {
+    width: 100%;
+    margin-bottom: 5px;
+    padding: 8px 12px;
+    border: 1px solid #dbdbdb;
+    box-sizing: border-box;
+    border-radius: 3px;
+  }
+  
+  .overlaptext {
+    position: relative;
+  }
+  
+  .overlaptext a {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    color: #003569;
+    font-size: 14px;
+    text-decoration: none;
+    font-family: 'Overpass Mono', monospace;
+    letter-spacing: -1px;
+  }
+  
+  .btn {
+    width: 100%;
+    background-color: #3897f0;
+    border: 1px solid #3897f0;
+    padding: 5px 12px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  
 
-.or{
+  .or{
     
     
     display:flex;
@@ -63,18 +107,31 @@
     
 }
 
-.bottomDiv{
-    width: 25%;
-    margin:auto;
-    border:1px solid grey;
-    height: 62px;
-    line-height: 62px;
+
+  .subcontent {
+    width: 350px;
+    height: 40%;
+    margin: 10px auto;
+    border: 1px solid #e6e6e6;
+    padding: 20px 50px;
+    background-color: #fff;
+  }
+  
+  .spart {
     text-align: center;
-    background: white;
-
-}
-
-.bottomDiv  Link {
-    color: dodgerblue;
-}
-
+    font-family: 'Overpass Mono', monospace;
+    word-spacing: -3px;
+    letter-spacing: -2px;
+    font-weight: normal;
+  }
+  
+  .spart a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #3897f0;
+    font-family: 'Overpass Mono', monospace;
+    word-spacing: -3px;
+    letter-spacing: -2px;
+    font-weight: normal;
+  }
+  
