@@ -1,0 +1,58 @@
+.box{
+    border:1px solid #dbdbdb;
+    width: 90%;
+    margin:70px;
+    display:flex;
+  
+}
+
+.sidebar{
+   
+    background-color: #fff;
+    border-right: 1px solid #dbdbdb;
+    border-right: 1px solid rgba(var(--b6a,219,219,219),1);
+    height: 100%;
+    overflow: hidden;
+    width: 350px;
+}
+
+.sidebar_header{
+    display:flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom:1px solid #dbdbdb;;
+  
+}
+
+.sidebar_scroll{
+    overflow: hidden;
+    flex: 0 0 auto;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex: 1 1 auto;
+    min-height: 0;
+    min-width: 0;
+    height: calc(100% - 44px);
+ 
+}
+.scroll{
+    overscroll-behavior: contain;
+    padding-top: 8px;
+
+}
+
+.box_body{
+    align-items: center;
+    
+    text-align: center;
+
+}
+.msg{
+    border-radius:50%;
+    border:1px solid black;
+    width: 100px;
+    height: 100px;
+    border-color: black;
+    padding: 20px;
+   
+}
