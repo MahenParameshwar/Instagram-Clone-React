@@ -1,7 +1,6 @@
 import Avatar from '@material-ui/core/Avatar'
 import React, { Component } from 'react';
 import { getPosts,getProfile } from '../../Services';
-import { DataContext } from '../Context/DataContextProvider';
 import { GalleryItem } from '../Layout/Gallery';
 import { ProfileBio, ProfileOptions, ProfileStats } from '../Layout/ProfileInfo';
 import styles from '../Styles/viewprofile.module.css'
@@ -12,8 +11,21 @@ class ViewProfile extends Component {
         super(props);
         this.state = {
             profileData:null,
-            posts : []
+            posts : [],
+            currUser:props.match.params
         }
+    }
+
+    async updateUser(){
+        const {user} = this.props.match.params;
+        const profileData = await getProfile(`http://localhost:3004/users?username=${user}`);
+        
+        const posts = await getPosts(`http://localhost:3004/posts?username=${user}`)
+        this.setState({
+            profileData:profileData[0],
+            posts:posts,
+            currUser:user
+        })
     }
     
 
@@ -30,8 +42,12 @@ class ViewProfile extends Component {
     }
 
     render() {
-        const {profileData,posts} = this.state
-        console.log(this.state)
+        const {profileData,posts,currUser} = this.state
+        const {user} = this.props.match.params;
+        if(user !== currUser){
+            this.updateUser();
+        }
+        const {history} = this.props;
         return (
             <div className="container">
                 <main className="main_container">
@@ -49,9 +65,9 @@ class ViewProfile extends Component {
                                 </div>
                                 
                                 <div className={styles.profile_header_content}>
-                                    <ProfileOptions {...profileData}/>
+                                    <ProfileOptions {...profileData} history={history}/>
                                     <ProfileStats {...profileData} posts={posts.length}/>
-                                    <ProfileBio {...profileData}/>
+                                    <ProfileBio {...profileData}  />
                                 </div>
                                 
                             </div>
@@ -79,5 +95,4 @@ class ViewProfile extends Component {
     }
 }
 
-ViewProfile.contextType = DataContext
 export default ViewProfile;

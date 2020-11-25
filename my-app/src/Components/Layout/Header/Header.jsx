@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import HeaderLinks from './HeaderLinks';
 import Search from './Search';
 import styles from '../../Styles/Header.module.css'
-import { NavLink } from 'react-router-dom';
 import SimpleMenu from './SimpleMenu';
+import { DataContext } from '../../Context/DataContextProvider';
 
 class Header extends Component {
     render() {
-        
+        const {loggedUserData,handelLogOut} = this.context 
+        const {avatar_img,username} = loggedUserData
         return (
             <header className="header">
                 <div className = {`${styles.header_container}`}>
@@ -19,7 +20,11 @@ class Header extends Component {
                     <Search />
                     <div>
                         <HeaderLinks />
-                        <SimpleMenu history={this.props.history} />
+                        <SimpleMenu
+                        avatar = {avatar_img}
+                        username = {username}
+                        handelLogout = {handelLogOut}
+                        history={this.props.history} />
                     </div>
                     
                 </div>
@@ -28,5 +33,7 @@ class Header extends Component {
         );
     }
 }
+
+Header.contextType = DataContext
 
 export default Header;

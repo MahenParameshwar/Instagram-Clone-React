@@ -1,4 +1,4 @@
-import { React} from "react";
+import {Component, React} from "react";
 import { Redirect, Route } from "react-router-dom";
 import { DataContext } from "../Context/DataContextProvider";
 

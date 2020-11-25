@@ -20,6 +20,13 @@ class DataContextProvider extends Component {
         this.authenticateUser = this.authenticateUser.bind(this);
         this.addUserData = this.addUserData.bind(this);
         this.checkEmail = this.checkEmail.bind(this);
+        this.handelLogOut = this.handelLogOut.bind(this);
+    }
+
+    handelLogOut(){
+        this.setState({
+            isAuth:false
+        })
     }
 
     authenticateUser(data) {
@@ -145,8 +152,17 @@ class DataContextProvider extends Component {
     render() {
         //remove userdata and add logedUserData
         let { isAuth, error, isLoading,regUser,loggedUserData} = this.state;
-        let { authenticateUser, addUserData ,checkEmail} = this;
-        let value = { authenticateUser, addUserData,checkEmail, isAuth, error, isLoading,regUser ,loggedUserData};
+        let { authenticateUser, addUserData ,checkEmail,handelLogOut} = this;
+        let value = { authenticateUser, 
+                        addUserData,
+                        checkEmail, 
+                        isAuth, 
+                        error, 
+                        isLoading,
+                        regUser ,
+                        handelLogOut,
+                        loggedUserData,
+                    };
         return (
             <DataContext.Provider value={value}>
                 {this.props.children}

@@ -1,6 +1,4 @@
-import { Route } from 'react-router-dom';
 import './App.css';
-import { Header } from './Components/Layout';
 import { Routes } from './Components/Routes';
 
 function App() {
@@ -11,4 +9,7 @@ function App() {
   );
 }
 
-export default App;
+export default App
+
+
+

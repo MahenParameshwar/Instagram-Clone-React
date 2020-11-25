@@ -5,7 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Avatar from '@material-ui/core/Avatar'
 import styles from '../../Styles/Header.module.css'
 
-export default function SimpleMenu({history}) {
+export default function SimpleMenu({history,avatar,username,handelLogout}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -18,7 +18,12 @@ export default function SimpleMenu({history}) {
     setAnchorEl(null);
     
     if(e.target.textContent === 'Profile'){
-      history.push('/viewprofile/rock')
+      history.push(`/viewprofile/${username}`)
+    }
+    else
+    if(e.target.textContent === 'Logout'){
+      
+      handelLogout();
     }
     
   };
@@ -31,10 +36,9 @@ export default function SimpleMenu({history}) {
        aria-controls="simple-menu" aria-haspopup="true" 
        onClick={handleClick}>
         <Avatar
-                      className={styles.avatar_img}
-              
-                      alt="Mahen"
-                      src="/Images/Avatar.png"
+                      className={styles.avatar_img}              
+                      alt={username}
+                      src={avatar}
                       />
         </Button>
       <Menu

@@ -32,6 +32,7 @@ class Login extends Component {
         let { email, password,isFound } = this.state;
         let { authenticateUser,isAuth } = this.context;
         let found = authenticateUser({ email, password });
+       
         this.setState({
             isFound:found
         })
@@ -46,44 +47,47 @@ class Login extends Component {
             <div>...loading pls wait</div>
         ) : !isAuth ? (
             <>
-            <div className={styles.mainDiv}>
-                <div><InstaImg/></div>
+            <div className = {styles.wrapper}>
+            <div className={styles.maincontent}>
+                <div className = {styles.header}><InstaImg/></div>
 
-                <form className={styles.form} onSubmit={this.handleSubmit}>
+                <form  onSubmit={this.handleSubmit}>
                     <div>
                         <input
-                            className={styles.input}
+                            className={styles.input1}
                             type="email"
                             value={email}
                             name="email"
                             placeholder="email"
                             onChange={this.handleChange}
-                        />
+                        />{" "}
                     </div>
 
                     <div>
                         <input
-                            className={styles.input}
+                            className={styles.input1}
                             type="password"
                             value={password}
                             name="password"
                             placeholder="password"
                             onChange={this.handleChange}
-                        />
+                        />{" "}
                     </div>
 
                     <div>
                         <input
-                            className={styles.button}
+                            className={styles.btn}
                             type="submit"
                             value="Login"
                             disabled={
                                 email.length === 0 || password.length === 0
                             }
-                        />
+                        />{" "}
                     </div>
-                        { error && <div style = {{color:"red"}}> wrong password</div> }
-                        { !isFound &&  <div style = {{color:"red"}}>user doesnot exists,pls register</div>}
+                        { error && <div style = {{color:"red",textAlign:"center",margin:"5px"}}> wrong password</div> }
+                        { !isFound &&  
+                        <div style = {{color:"red"}}>user doesnot exists,pls register</div>
+                        }
                 </form>
             
 
@@ -91,18 +95,29 @@ class Login extends Component {
                     <Or/>
                 
                 </div>
+
                 <div> 
                     <FbIcon src= "https://www.akaweddings.com.au/wp-content/uploads/2020/02/facebook.png" textColor = "blue"/>
                 </div>
-                <div>
+
+                <div style = {{textAlign:"center"}}>
                     forgot password?
                 </div>
 
-                </div>
-                    <div className = {styles.bottomDiv}>
-                    <span>Don't have an Account ?</span>  
-                    <Link style = {{color:"dodgerblue"}} to = "/reg">Sign up</Link>
-                </div>
+                
+
+            </div>
+             <div className = {styles.subcontent}>
+                 <div className = {styles.spart}>
+               Don't have an Account ?  
+               <Link style = {{color:"dodgerblue"}} to = "/reg">Sign up</Link>
+              </div >
+
+             </div>
+
+            
+            </div>
+
             </>
 
         ) : (
