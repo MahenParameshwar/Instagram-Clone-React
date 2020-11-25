@@ -1,11 +1,14 @@
-import React, { Component } from 'react';
+import React,{Component} from "react";
 import styles from '../../Styles/viewprofile.module.css'
-class GalleryItem extends Component {
+
+
+class ExploreItem extends Component {
     render() {
         return (
             <div className={styles.gallery_item}>
+                
                 <img 
-                src= "https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop"
+                src={this.props.src}
                 className={styles.gallery_img} alt="gallery-pic" />
                 <div className={styles.gallery_item_info}>
                     <ul>
@@ -22,4 +25,5 @@ class GalleryItem extends Component {
     }
 }
 
-export default GalleryItem;
+export {ExploreItem};
+

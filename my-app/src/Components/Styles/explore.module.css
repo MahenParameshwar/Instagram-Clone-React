@@ -1,0 +1,7 @@
+.explore{
+    display: grid;
+    grid-template-columns: repeat(3,minmax(auto,293px));
+    
+    gap:20px;
+    border:  1px solid red;
+}

@@ -21,6 +21,7 @@ class ProfileStats extends Component {
                             206  
                         </span> following
                     </li>
+                    
                 </ul>
         </div>
         );
