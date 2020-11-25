@@ -9,7 +9,10 @@
     "@testing-library/user-event": "^12.2.2",
     "antd": "^4.8.5",
     "axios": "^0.21.0",
+<<<<<<< HEAD
     "node": "^15.2.1",
+=======
+>>>>>>> 05154421ca7c50e7ec11c5c4c2b6f3d07127df44
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",

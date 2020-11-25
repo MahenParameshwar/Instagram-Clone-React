@@ -73,6 +73,7 @@ class Registration extends Component {
         
         return ( !isAuth &&
             <>  
+<<<<<<< HEAD
                 <div className = {styles.mainDiv}>
                     
                     <InstaImg/>
@@ -80,11 +81,28 @@ class Registration extends Component {
                     
                     
                     <FbIcon textColor = "white" color = "dodgerblue" src = "https://www.blindsource.com/images/icons/facebook-icon.jpg"/>
+=======
+              <div className = {styles.wrapper}>
+                <div className = {styles.maincontent}>
+                    
+                    <div className = {styles.header}>
+                      <InstaImg/>
+
+                    </div>
+                    
+                    <Header/>
+                    
+                    <div>
+                    <FbIcon textColor = "white" color = "dodgerblue" src = "https://www.blindsource.com/images/icons/facebook-icon.jpg"/>
+                    </div>
+
+>>>>>>> 05154421ca7c50e7ec11c5c4c2b6f3d07127df44
                     <div className = {styles.or}>
                        <Or/>
                 
                     </div>
 
+<<<<<<< HEAD
                 <form className ={styles.form}  onSubmit={this.handleSubmit}>
                     <input className = {styles.input}
                         type="email"
@@ -130,10 +148,75 @@ class Registration extends Component {
                     checkmail && <div style = {{color:"red"}}>  email already exists ! login </div>
     
                 }
+=======
+                <form   onSubmit={this.handleSubmit}>
+                    <div>
+                        <input className = {styles.input1}
+                            type="email"
+                            value={email}
+                            placeholder="email"
+                            onChange={this.handleChange}
+                            name="email"
+                            required
+                        />{" "}
+                    </div>
+                    
+                    <div>
+                        <input className = {styles.input2}
+                            type="fullName"
+                            value={fullName}
+                            placeholder="fullName"
+                            onChange={this.handleChange}
+                            name="fullName"
+                            required
+                        />
+
+                    </div>
+
+                    <div>
+                        <input className = {styles.input3}
+                            type="username"
+                            value={username}
+                            placeholder="username"
+                            onChange={this.handleChange}
+                            name="username"
+                            required
+                        />
+                    
+
+                    </div>
+                    
+                    <div>
+                        <input  className = {styles.input4}
+                            type="password"
+                            value={password}
+                            placeholder="password"
+                            onChange={this.handleChange}
+                            name="password"
+                            required
+                        />
+                    
+
+                    </div>
+
+                    <div>
+                        <input className = {styles.btn}
+                        type="submit" 
+                        value="sign up" />
+
+                    </div>
+                   
+                    
+                    { 
+                       checkmail && <div style = {{color:"red"}}>  email already exists ! login </div>
+    
+                     }
+>>>>>>> 05154421ca7c50e7ec11c5c4c2b6f3d07127df44
 
                 </form>
 
                 </div>
+<<<<<<< HEAD
 
                 <div className = {styles.bottomDiv}>
                     <span> have an Account ?</span> <Link style = {{color:"dodgerblue"}}  to = "/login">Log in</Link>
@@ -146,6 +229,18 @@ class Registration extends Component {
                     
                    
                 
+=======
+                    
+                <div className = {styles.subcontent}>
+                    <div className = {styles.spart}>
+                        have an Account ? <Link style = {{color:"dodgerblue"}}  to = "/login">Log in</Link>
+                    </div>
+
+                </div>
+               
+
+              </div>  
+>>>>>>> 05154421ca7c50e7ec11c5c4c2b6f3d07127df44
             </>
         );
     }
