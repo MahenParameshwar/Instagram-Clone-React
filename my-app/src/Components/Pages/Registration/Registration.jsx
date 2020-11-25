@@ -73,15 +73,6 @@ class Registration extends Component {
         
         return ( !isAuth &&
             <>  
-<<<<<<< HEAD
-                <div className = {styles.mainDiv}>
-                    
-                    <InstaImg/>
-                    <Header/>
-                    
-                    
-                    <FbIcon textColor = "white" color = "dodgerblue" src = "https://www.blindsource.com/images/icons/facebook-icon.jpg"/>
-=======
               <div className = {styles.wrapper}>
                 <div className = {styles.maincontent}>
                     
@@ -96,59 +87,11 @@ class Registration extends Component {
                     <FbIcon textColor = "white" color = "dodgerblue" src = "https://www.blindsource.com/images/icons/facebook-icon.jpg"/>
                     </div>
 
->>>>>>> 05154421ca7c50e7ec11c5c4c2b6f3d07127df44
                     <div className = {styles.or}>
                        <Or/>
                 
                     </div>
 
-<<<<<<< HEAD
-                <form className ={styles.form}  onSubmit={this.handleSubmit}>
-                    <input className = {styles.input}
-                        type="email"
-                        value={email}
-                        placeholder="email"
-                        onChange={this.handleChange}
-                        name="email"
-                        required
-                    />{" "}
-                    <br />
-                    <input className = {styles.input}
-                        type="fullName"
-                        value={fullName}
-                        placeholder="fullName"
-                        onChange={this.handleChange}
-                        name="fullName"
-                        required
-                    /><br/>
-                    <input className = {styles.input}
-                        type="username"
-                        value={username}
-                        placeholder="username"
-                        onChange={this.handleChange}
-                        name="username"
-                        required
-                    />{" "}
-                    <br />
-
-                    <input  className = {styles.input}
-                        type="password"
-                        value={password}
-                        placeholder="password"
-                        onChange={this.handleChange}
-                        name="password"
-                        required
-                    />{" "}
-                    <br />
-                    <input className = {styles.button}
-                      type="submit" 
-                      value="sign up" />
-                    
-                    { 
-                    checkmail && <div style = {{color:"red"}}>  email already exists ! login </div>
-    
-                }
-=======
                 <form   onSubmit={this.handleSubmit}>
                     <div>
                         <input className = {styles.input1}
@@ -211,25 +154,10 @@ class Registration extends Component {
                        checkmail && <div style = {{color:"red"}}>  email already exists ! login </div>
     
                      }
->>>>>>> 05154421ca7c50e7ec11c5c4c2b6f3d07127df44
 
                 </form>
 
                 </div>
-<<<<<<< HEAD
-
-                <div className = {styles.bottomDiv}>
-                    <span> have an Account ?</span> <Link style = {{color:"dodgerblue"}}  to = "/login">Log in</Link>
-
-
-                </div>
-
-                
-               
-                    
-                   
-                
-=======
                     
                 <div className = {styles.subcontent}>
                     <div className = {styles.spart}>
@@ -240,7 +168,6 @@ class Registration extends Component {
                
 
               </div>  
->>>>>>> 05154421ca7c50e7ec11c5c4c2b6f3d07127df44
             </>
         );
     }
