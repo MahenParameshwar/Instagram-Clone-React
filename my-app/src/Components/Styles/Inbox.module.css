@@ -1,58 +1,75 @@
-.box{
-    border:1px solid #dbdbdb;
-    width: 90%;
-    margin:70px;
-    display:flex;
-  
+.box {
+  border: 1px solid #dbdbdb;
+  width: 80%;
+  display: flex;
+  margin: 100px;
+  height: 50vh;
 }
 
-.sidebar{
-   
-    background-color: #fff;
-    border-right: 1px solid #dbdbdb;
-    border-right: 1px solid rgba(var(--b6a,219,219,219),1);
-    height: 100%;
-    overflow: hidden;
-    width: 350px;
+.sidebar {
+  background-color: #fff;
+  border-right: 1px solid #dbdbdb;
+  border-right: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+  overflow: hidden;
+  width: 350px;
 }
 
-.sidebar_header{
-    display:flex;
-    justify-content: space-between;
-    padding: 20px;
-    border-bottom:1px solid #dbdbdb;;
-  
+.sidebar_header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: 1px solid #dbdbdb;
 }
 
-.sidebar_scroll{
-    overflow: hidden;
-    flex: 0 0 auto;
-    justify-content: flex-start;
-    align-items: stretch;
-    flex: 1 1 auto;
-    min-height: 0;
-    min-width: 0;
-    height: calc(100% - 44px);
- 
-}
-.scroll{
-    overscroll-behavior: contain;
-    padding-top: 8px;
 
+.scroll {
+  padding-top: 8px;
+  overflow-y: scroll;
+  height: 100%;
 }
 
-.box_body{
-    align-items: center;
-    
-    text-align: center;
-
+.user_list{
+  display: flex;
+  padding:10px;
 }
-.msg{
-    border-radius:50%;
-    border:1px solid black;
-    width: 100px;
-    height: 100px;
-    border-color: black;
-    padding: 20px;
-   
+
+.msg_body {
+  width: 100%;
+  background-color: #ffffff;
+  padding-top: 50px;
+}
+.msg {
+  margin: auto;
+  width: 70%;
+  text-align: center;
+  align-items: center;
+}
+.msg>div{
+margin-top: 10px;
+}
+.msg_icon {
+  border-radius: 50%;
+  border: 1px solid black;
+  width: 100px;
+  height: 100px;
+  border-color: black;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn {
+  background-color: blue;
+  border: 1px solid transparent;
+  border: 0;
+
+  box-sizing: border-box;
+  cursor: pointer;
+
+  font-weight: 600;
+  padding: 5px 9px;
+  text-align: center;
+  text-overflow: ellipsis;
+  border-radius: 4px;
+  color: #fff;
 }
