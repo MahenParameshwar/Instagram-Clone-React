@@ -7,7 +7,7 @@ import SimpleMenu from './SimpleMenu';
 
 class Header extends Component {
     render() {
-        console.log(this.props)
+        
         return (
             <header className="header">
                 <div className = {`${styles.header_container}`}>

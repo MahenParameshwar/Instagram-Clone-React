@@ -1,27 +1,40 @@
 import React, { Component } from 'react';
 import { Switch,Route } from 'react-router-dom';
 import Header from '../Layout/Header/Header';
+
+import {Registration} from "../Pages/Registration"
 import { Explore, Home, Inbox } from '../Pages';
+import { Login } from '../Pages/Login/Login';
 import ViewProfile from '../Pages/ViewProfile';
+import { PrivateRoute } from './PrivateRoute';
 
 class Routes extends Component {
     render() {
         return (
             <div>
-                    <Route path="/" 
-                    render = {(props)=><Header {...props} />} />
-                    <Switch>
-                    <Route path = "/"
-                    exact render = {()=><Home />} />    
-                    <Route path="/inbox" exact
-                    render = {()=><Inbox />} />
+                   <Route path="/login" exact
+                    render = {()=><Login />} />
 
-                    <Route path="/explore" exact
-                    render = {()=><Explore />} />
+                    <Route path="/reg" exact
+        render = {(props)=><Registration {...props} />} />
+
+                    <PrivateRoute path="/" 
+                    Component={Header}/>
                     
-                    <Route path="/viewprofile/:user" exact
-                    render = {(props)=><ViewProfile {...props} />} />
-                </Switch>
+                    
+                    <Switch>
+                        <PrivateRoute path = "/"
+                        exact Component={Home} /> 
+                        
+                        <PrivateRoute path="/inbox" exact
+                        Component={Inbox} />
+
+                        <PrivateRoute path="/explore" exact
+                        Component={Explore} />
+                        
+                        <PrivateRoute path="/viewprofile/:user" exact
+                        Component={ViewProfile} />
+                    </Switch>
             </div>
         );
     }

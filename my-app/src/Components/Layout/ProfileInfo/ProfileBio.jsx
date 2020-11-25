@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import styles from '../../Styles/viewprofile.module.css'
 
 class ProfileBio extends Component {
+    
     render() {
+        const {profile_description,fullName} = this.props;
         return (
             <div className={styles.profile_bio}>
                 <h4 className={styles.profile_real_name}>
-                    Rock
+                    {fullName}
                 </h4>
                 <p>
-                    Welcome to my Instagram. These images will be posted without explanation, for your interpretation. Enjoy.
+                    {profile_description}
                 </p>                            
             </div>
         );
