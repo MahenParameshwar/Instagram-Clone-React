@@ -12,6 +12,10 @@ a{
   color: black;
 }
 
+button{
+  cursor: pointer;
+}
+
 .container{
   display: flex;
   align-items: center;
