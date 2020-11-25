@@ -64,6 +64,7 @@ class UserPost extends Component {
 
     }
 
+    //on mounting fetch all the comments of the post
     componentDidMount(){
         const {post_id} = this.props;
         axios.get(`http://localhost:3004/comments?post_id=${post_id}`)

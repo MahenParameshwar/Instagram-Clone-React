@@ -14,6 +14,7 @@ class Home extends Component {
     }
     
 
+    //On mounting fetch all the posts of the users you are following
     componentDidMount(){
     const {loggedUserData} = this.context;
     const following_users_arr = loggedUserData.following_users;
