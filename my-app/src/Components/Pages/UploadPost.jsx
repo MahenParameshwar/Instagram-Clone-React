@@ -3,6 +3,7 @@ import { createPost } from '../../Services'
 import {v4 as uuid} from 'uuid'
 import { DataContext } from '../Context/DataContextProvider'
 
+
 class UploadPost extends Component{
     constructor(props){
         super(props)
@@ -48,7 +49,8 @@ class UploadPost extends Component{
         
         return(
             <>
-                <form onSubmit={this.handelSubmit}>
+            <div className="container">
+            <form onSubmit={this.handelSubmit}>
                     <div>
                         <label htmlFor="">
                             Description
@@ -66,9 +68,11 @@ class UploadPost extends Component{
                     </div>
                     <input type="submit" value="submit"/>
                 </form>
+                
                 {
                     imgSrc && <img src={imgSrc} alt="icon" height="100px"/>
                 }
+            </div>
             </>
         )
     }

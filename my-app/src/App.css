@@ -20,7 +20,7 @@ button{
   display: flex;
   align-items: center;
   justify-content: center;
-
+  margin-top: 54px;
 }
 
 .header{
@@ -31,12 +31,15 @@ button{
   align-items: center;
   justify-content: center;
   width: 100%;
+  position: fixed;
+  top:0;
+  z-index: 1;
 }
 
 .main_container{
   max-width: 975px;
   width: 100%;
-  padding:0 20px;
+  padding:0 54px;
 }
 
 .home_section,.profile_section{
@@ -83,3 +86,5 @@ button{
 button.ant-btn > img{
   height: 22px;
 }
+
+

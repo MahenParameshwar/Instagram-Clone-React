@@ -27,6 +27,11 @@
     align-items: center;
 }
 
+.post_option_container{
+    display: flex;
+    justify-content: space-between;
+}
+
 .post_header_container > button{
     height: 50%;
     outline:none;
@@ -107,4 +112,8 @@ button.more_button > img {
     transform: scale(1);
 }
 
+
+.save_post_container{
+    padding-top: 40px;
+}
 

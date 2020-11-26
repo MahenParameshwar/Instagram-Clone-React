@@ -33,7 +33,7 @@
 
 .profile_user_settings{
     display: flex;
-    width: 140px;
+    width: 200px;
     height: 46px;
     align-items: center;
     justify-content: space-between;
@@ -41,6 +41,7 @@
 
 .profile_user_settings > h1{
     font-weight: normal;
+    margin: 0;
 }
 
 /* .profile_user_settings > button{
