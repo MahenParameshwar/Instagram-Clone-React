@@ -191,7 +191,7 @@ class UserPost extends Component {
         
         const {post_description,post_img,username,user_id,post_id} = this.props;
         const {loggedUserData} = this.context;
-        const {following_users,liked_posts,saved_posts} = loggedUserData;
+        const {following_users,liked_posts,saved_posts,avatar_img} = loggedUserData;
         const {comments,comment_count,likes_count} = this.state;
         return (
             <div className={styles.post}>
@@ -201,7 +201,7 @@ class UserPost extends Component {
                         <Avatar
                         className={styles.post_avatar}
                         alt={`${username}`}
-                        src="/Images/avatar"
+                        src={avatar_img}
                         />
 
                         {/*Post Username */}
