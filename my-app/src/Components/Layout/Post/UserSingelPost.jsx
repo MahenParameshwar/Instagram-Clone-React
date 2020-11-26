@@ -188,7 +188,6 @@ class UserSingelPost extends Component {
                                     onCancel={() => this.setModal2Visible(false)}
                                     >
                                         <button>Report</button>
-                                        <button>Go to Post</button>
                                         <button>Share to...</button>
                                         <button>Copy Link</button>
                                         <button>Embed</button>

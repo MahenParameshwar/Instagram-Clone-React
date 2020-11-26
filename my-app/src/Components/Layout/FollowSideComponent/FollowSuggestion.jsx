@@ -1,20 +1,26 @@
 import { Avatar } from '@material-ui/core';
 import React, { Component } from 'react';
 import styles from '../../Styles/suggestion.module.css'
+import { DataContext } from '../../Context/DataContextProvider';
+import DisplayUsers from './DisplayUsers';
 
 class FollowSuggestion extends Component {
     render() {
+        const {loggedUserData,usersData} = this.context;
+       
+        const {avatar_img,fullName,username,user_id,following_users} = loggedUserData;
+        
         return (
             <div className={styles.follow_container}>
                 <div className={styles.top}>
                     <Avatar
                     className={styles.avatar_url}
-                    alt="Mahen"
-                    src="images"
+                    alt={fullName}
+                    src={avatar_img}
                     />
                     <div>
-                        <div className={styles.username}>mahenparameshwar</div>
-                        <div className={`${styles.fullname} ${styles.grey}`}>Mahen Parameshwar</div>
+                    <div className={styles.username}>{username}</div>
+                    <div className={`${styles.fullname} ${styles.grey}`}>{fullName}</div>
                     </div>
                     <button className={`${styles.btn} ${styles.blue}`}>Switch</button>
                 </div>
@@ -23,28 +29,18 @@ class FollowSuggestion extends Component {
                     <button className={`${styles.btn} black`}>See All</button>
                 </div>
                 <div className={styles.bottom}>
-                    <div>
-                        <Avatar
-                        className={styles.suggestion_avatar_url}
-                        alt="Aahen"
-                        src="images"
-                        />
-                        <div>
-                            <div className={styles.username}>
-                                alb511
-                            </div>
-                            <div className={`${styles.follows} ${styles.grey}`}>
-                                Follows You
-                            </div>
-                        </div>
-                        <button className={`${styles.btn} ${styles.blue}`}>
-                            Follow
-                        </button>
-                    </div>
+                    
+                    {
+                        usersData.filter((user)=>user_id !== user.user_id).map((user)=>{
+                            return <DisplayUsers {...user} logged_id={user_id} logged_following_users = {following_users} />
+                        })
+                    }
+
                 </div>
             </div>
         );
     }
 }
 
+FollowSuggestion.contextType = DataContext
 export default FollowSuggestion;
