@@ -49,7 +49,10 @@ class Registration extends Component {
                 username,
                 password,
                 fullName,
+                profile_description:"",
                 following_users: {},
+                liked_posts:{},
+                saved_posts:{},
                 avatar_img: "",
                 follower_count: "",
             };
