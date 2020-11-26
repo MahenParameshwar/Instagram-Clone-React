@@ -54,7 +54,7 @@ class Registration extends Component {
                 liked_posts:{},
                 saved_posts:{},
                 avatar_img: "",
-                follower_count: "",
+                follower_count: 0,
             };
     
             addUserData(payload); // adding registred user data to our database

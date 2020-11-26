@@ -89,6 +89,7 @@ class DataContextProvider extends Component {
     }
 
     addUserData(payload) {
+        console.log(payload)
         let { isLoading, error } = this.state;
         let {
             user_id,
@@ -99,6 +100,9 @@ class DataContextProvider extends Component {
             avatar_img,
             follower_count,
             following_users,
+            liked_posts,
+            saved_posts,
+            profile_description
         } = payload;
         
 
@@ -116,6 +120,9 @@ class DataContextProvider extends Component {
                 avatar_img,
                 follower_count,
                 following_users,
+                liked_posts,
+                saved_posts,
+                profile_description
             })
             .then((res) => {
                 this.setState({
