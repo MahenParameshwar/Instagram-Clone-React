@@ -6,7 +6,7 @@ import AddComment from './AddComment';
 import { NavLink } from 'react-router-dom';
 import 'antd/dist/antd.css';
 import axios from 'axios';
-import { Modal, Button } from 'antd';
+import { Modal, Button, Spin } from 'antd';
 import { DataContext } from '../../Context/DataContextProvider';
 import {v4 as uuid} from 'uuid' 
 import { handelBookmark, handelFollow, handelLike } from '../../../Services';
@@ -143,7 +143,10 @@ class UserSingelPost extends Component {
         .then(res=>
             this.setState({
                 post:res.data[0],
-                likes_count:res.data[0].likes
+                likes_count:res.data[0].likes,
+                avatar_img:res.data[0].avatar_img,
+                user_id:res.data[0].user_id,
+                username:res.data[0].username
             })
         )
         axios.get(`http://localhost:3004/comments?post_id=${post_id}`)
@@ -157,8 +160,8 @@ class UserSingelPost extends Component {
 
 
     render() {
-        const {post,comments,likes_count,avatar_img,username} = this.state;
-        
+        const {post,comments,likes_count,avatar_img,username,user_id} = this.state;
+        console.log(avatar_img)
         const {loggedUserData} = this.context;
         const {liked_posts,saved_posts} = loggedUserData
         return (
@@ -173,9 +176,12 @@ class UserSingelPost extends Component {
                                 <div className={styles.sp_post_top}>
                                     <div className={styles.sp_avatar_container}>
                                         <Avatar className={styles.sp_avatar} src={avatar_img} alt={username}/>
-                                        <div className={styles.sp_username}>
-                                            {post.username}
-                                        </div>
+                                        <NavLink to={`/viewprofile/${username}`}>
+                                            <div className={styles.sp_username}>
+                                                {post.username}
+                                            </div>
+                                        </NavLink>
+                                        
                                     </div>
                                     <Button  onClick={() => this.setModal2Visible(true)}>
                                     <img src="/Images/more.png" alt=""/>
@@ -247,7 +253,7 @@ class UserSingelPost extends Component {
                         
                     </div> : 
                     <div>
-
+                        <Spin/>
                     </div>
             
             

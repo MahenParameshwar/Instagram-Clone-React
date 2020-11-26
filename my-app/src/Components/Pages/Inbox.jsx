@@ -1,25 +1,31 @@
 import { Avatar } from "@material-ui/core";
 import React, { Component } from "react";
+import { DataContext } from "../Context/DataContextProvider";
+import Footer from "../Layout/Footer/Footer";
 import styles from "../Styles/Inbox.module.css";
 
 class Inbox extends Component {
+  
   render() {
+    const {loggedUserData} = this.context;
+    const {username} = loggedUserData
     return (
+      <>
       <div className={styles.box}>
         <div className={styles.sidebar}>
           <div className={styles.sidebar_header}>
-            <div><h3>Username</h3></div>
+          <div><h3>{username}</h3></div>
             <div><img width="30px" src="Images/message.svg" alt=""/></div>
             </div>
 
             <div className={styles.scroll}>
               <div className={styles.user_list}>
                 <div><Avatar/></div>
-                <div style={{marginLeft:"15px",marginTop:"10px"}}>Username</div>
+                <div style={{marginLeft:"15px",marginTop:"10px"}}>Sachin</div>
               </div>
               <div className={styles.user_list}>
                 <div><Avatar/></div>
-                <div style={{marginLeft:"15px",marginTop:"10px"}}>Username</div>
+                <div style={{marginLeft:"15px",marginTop:"10px"}}>Modi</div>
               </div>
           </div>
         </div>
@@ -37,8 +43,12 @@ class Inbox extends Component {
           </div>
         </div>
       </div>
+      <Footer/>
+      </>
     );
   }
 }
 
+
+Inbox.contextType = DataContext
 export default Inbox;

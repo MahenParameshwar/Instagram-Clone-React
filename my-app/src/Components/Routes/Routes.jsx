@@ -7,7 +7,6 @@ import { Explore, Home, Inbox,SavedPosts,SingelPost,UploadPost } from '../Pages'
 import ViewProfile from '../Pages/ViewProfile';
 import { PrivateRoute } from './PrivateRoute';
 
-
 class Routes extends Component {
     render() {
         return (
@@ -22,6 +21,7 @@ class Routes extends Component {
                     Component={Header}/>
                     
                     <Switch>
+                        
                         <PrivateRoute path = "/"
                         exact Component={Home} /> 
                         
@@ -47,6 +47,7 @@ class Routes extends Component {
                         
 
                     </Switch>
+                   
             </div>
         );
     }

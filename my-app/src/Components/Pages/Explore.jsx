@@ -5,6 +5,7 @@ import {ExploreItem} from "../Layout/Explore/ExploreItem";
 import axios from "axios"
 import styles from '../Styles/viewprofile.module.css'
 import { GalleryItem } from '../Layout/Gallery';
+import Footer from '../Layout/Footer/Footer';
 
 
 class Explore extends Component {
@@ -35,6 +36,7 @@ class Explore extends Component {
         const {posts} = this.state
         console.log(posts)
         return (
+            <>
             <div className="container">
                 <main className="main_container">
                     <div style={{marginTop:"30px"}}>
@@ -54,6 +56,8 @@ class Explore extends Component {
                     
                 </main>
             </div>
+            <Footer />
+            </>
         );
     }
 }

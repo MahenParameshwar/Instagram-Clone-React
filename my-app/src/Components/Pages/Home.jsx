@@ -4,6 +4,8 @@ import { UserPost } from '../Layout/Post';
 import {FollowSuggestion} from '../Layout/FollowSideComponent'
 import styles from '../Styles/Home.module.css'
 import axios from 'axios';
+import Footer from '../Layout/Footer/Footer';
+
 
 
 class Home extends Component {
@@ -43,7 +45,8 @@ class Home extends Component {
         console.log(posts)
         
         return (
-            <div className="container">
+            <>
+                <div className="container">
                 <main className="main_container">
                     <section className="home_section">
                         <div className={styles.home_left_section}>
@@ -62,6 +65,9 @@ class Home extends Component {
                     </section>
                 </main>
             </div>
+           
+            </>
+            
         );
     }
 }
