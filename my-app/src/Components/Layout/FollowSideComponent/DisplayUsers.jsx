@@ -4,6 +4,7 @@ import styles from '../../Styles/suggestion.module.css'
 import {  handelFollow } from '../../../Services';
 import axios from 'axios'
 import { DataContext } from '../../Context/DataContextProvider';
+import { NavLink } from 'react-router-dom';
 
 class DisplayUsers extends Component {
     constructor(props) {
@@ -65,9 +66,12 @@ class DisplayUsers extends Component {
             src={avatar_img}
             />
             <div>
-                <div className={styles.username}>
+            <NavLink to={`/viewprofile/${username}`}>
+            <div className={styles.username}>
                     {username}
-                </div>
+            </div>
+            </NavLink>
+               
                 <div className={`${styles.follows} ${styles.grey}`}>
                     {following_users[logged_id] ? "Follows You" : "Suggested" }
                 </div>

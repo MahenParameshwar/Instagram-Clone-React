@@ -17,7 +17,7 @@ class ExploreItem extends Component {
                             <i className="fas fa-heart" aria-hidden="true"></i> {this.props.likes}
                         </li>
                         <li className="gallery-item-comments">
-                            <i className="fas fa-comment" aria-hidden="true"></i> 5
+                            <i className="fas fa-comment" aria-hidden="true"></i> {this.props.comment_count}
                         </li>
                     </ul>
                 </div>

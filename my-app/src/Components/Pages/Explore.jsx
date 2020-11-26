@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import { DataContext } from '../Context/DataContextProvider';
 import {ExploreItem} from "../Layout/Explore/ExploreItem";
 import axios from "axios"
-import styles from '../Styles/explore.module.css'
+import styles from '../Styles/viewprofile.module.css'
+import { GalleryItem } from '../Layout/Gallery';
 
 
 class Explore extends Component {
@@ -36,11 +37,13 @@ class Explore extends Component {
         return (
             <div className="container">
                 <main className="main_container">
-                    <div >
-                        <div  >
-                            <div className = {styles.explore}>
+                    <div style={{marginTop:"30px"}}>
+                        <h2>Explore</h2>
+                        <div >
+                            <div className = {styles.gallery}>
                             {
-                                    posts?.map(item=><ExploreItem {...item} key={item.post_id} />)
+                                
+                                    posts?.map(item=><GalleryItem {...item}/>)
                             }
                               
       

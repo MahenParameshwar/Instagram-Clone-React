@@ -37,8 +37,10 @@ class SavedPosts extends Component {
         return (
             <div className="container">
                  <main className="main_container">
-                     <div className={styles.save_post_container}>
-                        <div className={styles.gallery} style={{marginTop:"200px"}}>
+                
+                     <div className={styles.save_post_container} style={{marginTop:"30px"}}>
+                        <h2>Saved Posts</h2>
+                        <div className={styles.gallery} >
                             {
                                 posts?.map(post=>{
                                     return <GalleryItem key={post.post_id} {...post} />
