@@ -22,6 +22,7 @@ class ProfileStats extends Component {
                             {Object.keys(following_users).length} 
                         </span> following
                     </li>
+                    
                 </ul>
         </div>
         );

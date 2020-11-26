@@ -1,0 +1,6 @@
+.explore{
+    display: grid;
+    grid-template-columns: repeat(3,minmax(auto,293px));
+    grid-gap:5px;
+
+}
