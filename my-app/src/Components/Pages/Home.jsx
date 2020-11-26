@@ -25,10 +25,10 @@ class Home extends Component {
                     .map((id)=>`http://localhost:3004/posts?user_id=${id}`)
     
     const requests = urlArr.map((url) => fetch(url).then((res)=>res.json()));
-    
+    //console.log(requests)
     axios.all(requests)
     .then((res)=>{
-        console.log(res)
+        //console.log(res)
         this.setState({
             posts:res
         })
@@ -40,6 +40,7 @@ class Home extends Component {
     render() {
         
         const {posts} = this.state;
+        console.log(posts)
         
         return (
             <div className="container">
