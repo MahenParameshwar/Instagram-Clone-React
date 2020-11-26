@@ -1,0 +1,57 @@
+import axios from 'axios';
+import React, { Component } from 'react';
+import { DataContext } from '../Context/DataContextProvider';
+import { GalleryItem } from '../Layout/Gallery';
+import { UserPost } from '../Layout/Post';
+import styles from '../Styles/viewprofile.module.css'
+
+class SavedPosts extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            posts:null
+        }
+    }
+    
+    componentDidMount(){
+        const {loggedUserData} = this.context;
+        const posts_arr = Object.keys(loggedUserData.saved_posts);
+        console.log(posts_arr);
+    //Posts Array Requests Url
+    const urlArr = posts_arr
+                    .map((id)=>`http://localhost:3004/posts?post_id=${id}`)
+    
+    const requests = urlArr.map((url) => fetch(url).then((res)=>res.json()).then(res=>res[0]));
+    
+    axios.all(requests)
+    .then((res)=>{
+        console.log(res)
+        this.setState({
+            posts:res
+        })
+    })
+    }
+    render() {
+        const {posts} = this.state
+        return (
+            <div className="container">
+                 <main className="main_container">
+                     <div className={styles.save_post_container}>
+                        <div className={styles.gallery} style={{marginTop:"200px"}}>
+                            {
+                                posts?.map(post=>{
+                                    return <GalleryItem key={post.post_id} {...post} />
+                                })
+                            }
+                        </div>
+                     </div>
+                </main>
+            </div>
+        );
+    }
+}
+
+SavedPosts.contextType = DataContext
+
+export default SavedPosts;

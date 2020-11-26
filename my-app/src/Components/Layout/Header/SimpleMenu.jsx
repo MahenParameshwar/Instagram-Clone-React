@@ -22,8 +22,11 @@ export default function SimpleMenu({history,avatar,username,handelLogout}) {
     }
     else
     if(e.target.textContent === 'Logout'){
-      
       handelLogout();
+    }
+    else
+    if(e.target.textContent === 'Saved Posts'){
+      history.push(`/savedposts/${username}`)
     }
     
   };
@@ -49,7 +52,7 @@ export default function SimpleMenu({history,avatar,username,handelLogout}) {
         onClose={handleClose}
       >
         <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>Save</MenuItem>
+        <MenuItem onClick={handleClose}>Saved Posts</MenuItem>
         <MenuItem onClick={handleClose}>Logout</MenuItem>
       </Menu>
     </>

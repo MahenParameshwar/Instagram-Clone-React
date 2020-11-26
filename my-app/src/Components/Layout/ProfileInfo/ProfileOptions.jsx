@@ -3,7 +3,15 @@ import styles from '../../Styles/viewprofile.module.css'
 class ProfileOptions extends Component {
     
     render() {
-        const {username,history} = this.props
+        const {
+                user_id,
+                username,
+                history,
+                loggedUserName,
+                following_users,
+                unFollowUser,
+                followUser
+            } = this.props
         
         return (
             <div className={styles.profile_user_settings}>
@@ -11,10 +19,23 @@ class ProfileOptions extends Component {
                     {username}
                 </h1>
             <button className={styles.profile_btn}>Message</button>
+            {
+            loggedUserName === username ?
             <button onClick={()=>history.push('/uploadPost')}
             className={styles.profile_btn}>
                 Upload
-            </button>
+            </button> 
+            : 
+            <>
+                {
+                    following_users[user_id] ? 
+                    <button onClick={()=>unFollowUser()}>Unfollow</button> :
+                    <button onClick={()=>followUser()}>Follow</button>
+                    
+                }
+                            
+                        </>
+            }
             </div>
         );
     }

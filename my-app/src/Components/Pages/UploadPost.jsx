@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { createPost } from '../../Services'
 import {v4 as uuid} from 'uuid'
 import { DataContext } from '../Context/DataContextProvider'
+import styles from '../Styles/UploadPost.module.css'
+
 
 class UploadPost extends Component{
     constructor(props){
@@ -48,27 +50,39 @@ class UploadPost extends Component{
         
         return(
             <>
-                <form onSubmit={this.handelSubmit}>
-                    <div>
-                        <label htmlFor="">
-                            Description
-                        </label>
-                        <input 
-                            type="description" 
-                            name="description"
-                            onChange={this.handelChange}
-                            value = {description}
-                            id=""/>
+            <div className={styles.container}>
+            <form onSubmit={this.handelSubmit}>
+                    <div className={styles.row}>
+                        <div className={styles.col-25}>
+                            <label for="lname">Description</label>
+                        </div>
+                        <div className={styles.col-75}>
+                            <textarea 
+                                type="description" 
+                                name="description"
+                                onChange={this.handelChange}
+                                value = {description}
+                                id=""/>
+                        </div>
                     </div>
-                    <div>
-                        <label htmlFor="">Photo</label>
-                        <input type="file" ref={this.photo} name="imgSrc" onChange={this.handelChange}/>
+                    <div className={styles.row}>
+                        <div className={styles.col-25}>
+                            <label htmlFor="">Photo</label>
+                        </div>
+                        <div className={styles.col-75}>
+                            <input type="file" ref={this.photo} name="imgSrc" onChange={this.handelChange}/>
+                        </div>
+                    
                     </div>
-                    <input type="submit" value="submit"/>
+                    <div className={styles.row}>
+                       <input className ={styles.submit} type="submit" value="submit"/>
+                    </div>
                 </form>
+                
                 {
                     imgSrc && <img src={imgSrc} alt="icon" height="100px"/>
                 }
+            </div>
             </>
         )
     }

@@ -9,7 +9,7 @@ import axios from 'axios';
 import { Modal, Button } from 'antd';
 import { DataContext } from '../../Context/DataContextProvider';
 import {v4 as uuid} from 'uuid' 
-import { handelFollow } from '../../../Services';
+import { handelBookmark, handelFollow, handelLike } from '../../../Services';
 
 class UserPost extends Component {
     
@@ -20,12 +20,79 @@ class UserPost extends Component {
         this.state = {
             modal2Visible: false,
             comment_count:props.comment_count,
+            likes_count:props.likes,
+            saved_posts:props.saved_posts,
             comments:[],
         }
 
         this.unFollowUser = this.unFollowUser.bind(this);
         this.followUser = this.followUser.bind(this);
         this.postComment = this.postComment.bind(this);
+        this.likePost = this.likePost.bind(this);
+        this.unLikePost = this.unLikePost.bind(this);
+        this.unBookmark = this.unBookmark.bind(this);
+        this.bookmark = this.bookmark.bind(this);
+    }
+
+    async unBookmark(){
+        const {post_id} = this.props
+        const {loggedUserData,updateLoggedUserData} = this.context;
+        const {saved_posts,id} = loggedUserData;
+        delete saved_posts[post_id];
+
+        const data = await handelBookmark(saved_posts,id);
+        updateLoggedUserData(data);
+    }
+
+    async bookmark(){
+        const {post_id} = this.props
+        const {loggedUserData,updateLoggedUserData} = this.context;
+        const {saved_posts,id} = loggedUserData;
+        saved_posts[post_id] = true;
+
+        const data = await handelBookmark(saved_posts,id);
+        updateLoggedUserData(data);
+    }
+
+    async likePost(){
+        const {post_id} = this.props
+        const postIdPatch = this.props.id;
+        const {loggedUserData,updateLoggedUserData} = this.context;
+        const {liked_posts,id} = loggedUserData;
+        liked_posts[post_id] = true;
+        const data = await handelLike(liked_posts,id);
+        updateLoggedUserData(data);
+        
+        const {likes_count} = this.state
+        const newLikecount = likes_count + 1;
+        axios.patch(`http://localhost:3004/posts/${postIdPatch}`,{
+            likes : newLikecount
+        }).then((res)=>{
+            this.setState({
+                likes_count:newLikecount,
+            })
+        })
+
+    }
+
+    async unLikePost (){
+        const {post_id} = this.props
+        const postIdPatch = this.props.id;
+        const {loggedUserData,updateLoggedUserData} = this.context;
+        const {liked_posts,id} = loggedUserData;
+        delete liked_posts[post_id];
+        const data = await handelLike(liked_posts,id);
+        updateLoggedUserData(data);
+        
+        const {likes_count} = this.state
+        const newLikecount = likes_count - 1;
+        axios.patch(`http://localhost:3004/posts/${postIdPatch}`,{
+            likes : newLikecount
+        }).then((res)=>{
+            this.setState({
+                likes_count:newLikecount,
+            })
+        })
     }
 
     setModal2Visible(modal2Visible) {
@@ -91,7 +158,7 @@ class UserPost extends Component {
     postComment(comment){
         
         const {loggedUserData} = this.context;
-        const {username,user_id} = loggedUserData;
+        const {username,user_id,liked_posts} = loggedUserData;
         //posts props
         const {post_id,id} = this.props;
         console.log(comment,username,user_id,post_id)
@@ -107,7 +174,6 @@ class UserPost extends Component {
                     .then((res)=>{
                         this.updateCommentCount(id,res.data)
                     }).catch((err)=>console.log(err.message));
-
     }
 
     //on mounting fetch all the comments of the post
@@ -123,11 +189,10 @@ class UserPost extends Component {
 
     render() {
         
-        const {likes,post_description,post_img,username,user_id} = this.props;
+        const {post_description,post_img,username,user_id,post_id} = this.props;
         const {loggedUserData} = this.context;
-        const {following_users} = loggedUserData;
-        console.log(following_users)
-        const {comments,comment_count} = this.state;
+        const {following_users,liked_posts,saved_posts} = loggedUserData;
+        const {comments,comment_count,likes_count} = this.state;
         return (
             <div className={styles.post}>
                 <div className={styles.post_header_container}>
@@ -173,19 +238,41 @@ class UserPost extends Component {
                 
                 <img className={styles.post_img} src={`${post_img}`} alt=""/>
                 <div className={styles.post_content}>
-                    <div className={styles.post_options}>
-                        <button className={styles.post_btn}>
-                            <img className={styles.post_op_img} src="/Images/heart.svg" alt=""/>
-                        </button>
-                        <button className={styles.post_btn}>
-                            <img className={styles.post_op_img} src="/Images/chat-bubble.svg" alt=""/>
-                        </button>
-                        <button className={styles.post_btn}>
-                            <img className={styles.post_op_img} src="/Images/send.svg" alt=""/>
-                        </button>
+                    <div className={styles.post_option_container}>
+                        <div className={styles.post_options}>
+                            {
+                                liked_posts[post_id] ? 
+                                <button onClick={this.unLikePost} 
+                                    className={styles.post_btn}>
+                                    <img className={styles.post_op_img} src="/Images/like.svg" alt=""/>
+                                </button> :
+                                <button onClick={this.likePost} 
+                                className={styles.post_btn}>
+                                    <img className={styles.post_op_img} src="/Images/unlike.svg" alt=""/>
+                                </button>
+                            }
+                            <button className={styles.post_btn}>
+                                <img className={styles.post_op_img} src="/Images/chat-bubble.svg" alt=""/>
+                            </button>
+                            <button className={styles.post_btn}>
+                                <img className={styles.post_op_img} src="/Images/send.svg" alt=""/>
+                            </button>
+                        </div>
+                        <div>
+                            {
+                                saved_posts[post_id] ? 
+                                    <button className={styles.post_btn} onClick={this.unBookmark}>
+                                        <img className={styles.post_op_img} src="/Images/bookmark.svg" alt=""/>
+                                    </button> :
+                                    <button className={styles.post_btn} onClick={this.bookmark}>
+                                        <img className={styles.post_op_img} src="/Images/unbookmark.svg" alt=""/>
+                                    </button>
+                            }
+                        </div>
                     </div>
+                    
                     <div className={styles.likes_count}>
-                        {`${likes}`} likes
+                        {`${likes_count}`} likes
                     </div>
                     <div className={styles.view_comments}>
                         View all {`${comment_count}`} comments
