@@ -32,7 +32,7 @@ class FollowSuggestion extends Component {
                     
                     {
                         usersData.filter((user)=>user_id !== user.user_id).map((user)=>{
-                            return <DisplayUsers {...user} logged_id={user_id} logged_following_users = {following_users} />
+                            return <DisplayUsers key={user.user_id} {...user} logged_id={user_id} logged_following_users = {following_users} />
                         })
                     }
 
