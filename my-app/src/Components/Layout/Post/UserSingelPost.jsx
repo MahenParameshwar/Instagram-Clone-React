@@ -157,7 +157,7 @@ class UserSingelPost extends Component {
 
 
     render() {
-        const {post,comments,likes_count} = this.state;
+        const {post,comments,likes_count,avatar_img,username} = this.state;
         
         const {loggedUserData} = this.context;
         const {liked_posts,saved_posts} = loggedUserData
@@ -172,7 +172,7 @@ class UserSingelPost extends Component {
                             <div className={styles.sp_post_container}>
                                 <div className={styles.sp_post_top}>
                                     <div className={styles.sp_avatar_container}>
-                                        <Avatar className={styles.sp_avatar}/>
+                                        <Avatar className={styles.sp_avatar} src={avatar_img} alt={username}/>
                                         <div className={styles.sp_username}>
                                             {post.username}
                                         </div>

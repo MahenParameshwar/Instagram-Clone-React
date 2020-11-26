@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import styles from '../../Styles/suggestion.module.css'
 import { DataContext } from '../../Context/DataContextProvider';
 import DisplayUsers from './DisplayUsers';
+import { NavLink } from 'react-router-dom';
 
 class FollowSuggestion extends Component {
     render() {
@@ -19,6 +20,7 @@ class FollowSuggestion extends Component {
                     src={avatar_img}
                     />
                     <div>
+                        
                     <div className={styles.username}>{username}</div>
                     <div className={`${styles.fullname} ${styles.grey}`}>{fullName}</div>
                     </div>

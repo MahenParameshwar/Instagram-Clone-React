@@ -4,20 +4,15 @@ import {v4 as uuid} from 'uuid'
 import { DataContext } from '../Context/DataContextProvider'
 import styles from '../Styles/UploadPost.module.css'
 import { message} from 'antd';
- 
- 
 class UploadPost extends Component{
    constructor(props){
        super(props)
- 
        this.state = {
            imgSrc:null,
            description:""
        }
- 
        this.photo = React.createRef()
    }
- 
    handelChange = (e)=>{
        const {name,value,type} = e.target;
        const val = (type==='file')?URL.createObjectURL(e.target.files[0])
@@ -26,13 +21,11 @@ class UploadPost extends Component{
            [name]:val
        })
    }
- 
    handelSubmit = (e)=>{
        e.preventDefault();
        const {description,imgSrc} = this.state;
        const {loggedUserData} = this.context
-       const {user_id,username} = loggedUserData;
-      
+       const {user_id,username,avatar_img} = loggedUserData;
        createPost('http://localhost:3004/posts',{
                post_id:uuid(),
                likes:0,
@@ -40,19 +33,15 @@ class UploadPost extends Component{
                post_description:description,
                post_img:imgSrc,
                user_id,
-               username
+               username,
+               avatar_img
        })
-      
-      
    }
- 
    success = () => {
        message.success('Post uploaded successfully');
      };
- 
    render(){
        const {description,imgSrc} = this.state;
-      
        return(
            <>
            <div className={styles.container}>
@@ -77,13 +66,11 @@ class UploadPost extends Component{
                        <div className={styles.col-75}>
                            <input type="file" ref={this.photo} name="imgSrc" onChange={this.handelChange}/>
                        </div>
-                  
                    </div>
                    <div className={styles.row}>
                       <input className ={styles.submit} onClick={this.success}  type="submit" value="submit"/>
                    </div>
                </form>
-              
                {
                    imgSrc && <img src={imgSrc} alt="icon" height="100px"/>
                }
@@ -92,6 +79,5 @@ class UploadPost extends Component{
        )
    }
 }
- 
 UploadPost.contextType = DataContext;
 export default UploadPost

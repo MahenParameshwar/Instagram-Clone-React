@@ -1,6 +1,9 @@
 .App{
   min-height: 100vh;
   background-color: #FAFAFA;
+  display: flex;
+  flex-direction: column;
+
 }
 
 ul{
@@ -21,6 +24,7 @@ button{
   align-items: center;
   justify-content: center;
   margin-top: 54px;
+  flex: 1;
 }
 
 .header{
@@ -86,5 +90,26 @@ button{
 button.ant-btn > img{
   height: 22px;
 }
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.footer p a {
+  color: #003569;
+  text-decoration: none;
+  padding-left: 10px;
+  font-size: 13px;
+}
+
+.footer p span {
+  color: rgb(189, 186, 186);
+  padding-left: 80px;
+  font-size: 13px;
+}
+
 
 

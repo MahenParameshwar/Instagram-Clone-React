@@ -5,7 +5,7 @@ import styles from '../../Styles/Header.module.css'
 const headerLinks = [
     {
         to:"/",
-        img_src:"/Images/home.png"
+        img_src:"/Images/home.svg"
     },
     {
         to:"/inbox",

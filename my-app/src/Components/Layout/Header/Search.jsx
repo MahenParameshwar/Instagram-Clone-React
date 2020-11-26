@@ -5,7 +5,7 @@ class Search extends Component {
         return (
             <div className={styles.header_search_container}>
                 <img className={styles.header_search_icon} src="/images/search.svg" alt="search"/>
-                <input type="text" name="" placeholder="search" id=""/>
+                <input style={{outline:"none",border:"1px solid grey",borderRadius:"5px"}} type="text" name="" placeholder="search" id=""/>
             </div>
         );
     }
