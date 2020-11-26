@@ -89,6 +89,7 @@ class DataContextProvider extends Component {
     }
 
     addUserData(payload) {
+        console.log(payload)
         let { isLoading, error } = this.state;
         let {
             user_id,
@@ -99,6 +100,9 @@ class DataContextProvider extends Component {
             avatar_img,
             follower_count,
             following_users,
+            liked_posts,
+            saved_posts,
+            profile_description
         } = payload;
         
 
@@ -116,6 +120,9 @@ class DataContextProvider extends Component {
                 avatar_img,
                 follower_count,
                 following_users,
+                liked_posts,
+                saved_posts,
+                profile_description
             })
             .then((res) => {
                 this.setState({
@@ -141,7 +148,9 @@ class DataContextProvider extends Component {
             .get("http://localhost:3004/users")
 
             .then((res) => {
+                
                 this.setState({
+                    
                     usersData: res.data,
                     isLoading: false,
                 });
@@ -157,7 +166,8 @@ class DataContextProvider extends Component {
 
     render() {
         //remove userdata and add logedUserData
-        let { isAuth, error, isLoading,regUser,loggedUserData} = this.state;
+        let { isAuth, error, isLoading,regUser,loggedUserData,usersData} = this.state;
+        
         let { authenticateUser, addUserData ,checkEmail,handelLogOut,updateLoggedUserData} = this;
         let value = { authenticateUser, 
                         addUserData,
@@ -166,6 +176,7 @@ class DataContextProvider extends Component {
                         error, 
                         isLoading,
                         regUser ,
+                        usersData,
                         updateLoggedUserData,
                         handelLogOut,
                         loggedUserData,
