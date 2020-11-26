@@ -67,10 +67,10 @@ class UploadPost extends Component{
                     </div>
                     <div className={styles.row}>
                         <div className={styles.col-25}>
-                            <label htmlFor="">Photo</label>
+                            <label htmlFor="description">Photo</label>
                         </div>
                         <div className={styles.col-75}>
-                            <input type="file" ref={this.photo} name="imgSrc" onChange={this.handelChange}/>
+                            <input id="description" type="file" ref={this.photo} name="imgSrc" onChange={this.handelChange}/>
                         </div>
                     
                     </div>
