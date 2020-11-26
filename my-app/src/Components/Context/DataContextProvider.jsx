@@ -10,17 +10,23 @@ class DataContextProvider extends Component {
             error: false,
             isLoading: false,
             //change LoggedUser to logedUserData
-            loggedUser:null,
+            loggedUserData:null,
             //Registerd users Data
             usersData: null,
             //loged-in user id
             currentUserData:null
         };
-
+        this.updateLoggedUserData = this.updateLoggedUserData.bind(this)
         this.authenticateUser = this.authenticateUser.bind(this);
         this.addUserData = this.addUserData.bind(this);
         this.checkEmail = this.checkEmail.bind(this);
         this.handelLogOut = this.handelLogOut.bind(this);
+    }
+
+    updateLoggedUserData(data){
+        this.setState({
+            loggedUserData:data
+        })
     }
 
     handelLogOut(){
@@ -152,7 +158,7 @@ class DataContextProvider extends Component {
     render() {
         //remove userdata and add logedUserData
         let { isAuth, error, isLoading,regUser,loggedUserData} = this.state;
-        let { authenticateUser, addUserData ,checkEmail,handelLogOut} = this;
+        let { authenticateUser, addUserData ,checkEmail,handelLogOut,updateLoggedUserData} = this;
         let value = { authenticateUser, 
                         addUserData,
                         checkEmail, 
@@ -160,6 +166,7 @@ class DataContextProvider extends Component {
                         error, 
                         isLoading,
                         regUser ,
+                        updateLoggedUserData,
                         handelLogOut,
                         loggedUserData,
                     };

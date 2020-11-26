@@ -19,7 +19,7 @@ class ProfileStats extends Component {
                     </li>
                     <li>
                         <span className={styles.stat_count}>
-                            {following_users.length}  
+                            {Object.keys(following_users).length} 
                         </span> following
                     </li>
                     

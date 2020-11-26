@@ -9,6 +9,7 @@ import axios from 'axios';
 import { Modal, Button } from 'antd';
 import { DataContext } from '../../Context/DataContextProvider';
 import {v4 as uuid} from 'uuid' 
+import { handelFollow } from '../../../Services';
 
 class UserPost extends Component {
     
@@ -22,11 +23,56 @@ class UserPost extends Component {
             comments:[],
         }
 
+        this.unFollowUser = this.unFollowUser.bind(this);
+        this.followUser = this.followUser.bind(this);
         this.postComment = this.postComment.bind(this);
     }
 
     setModal2Visible(modal2Visible) {
         this.setState({ modal2Visible });
+    }
+
+    async followUser(){
+        
+        const {user_id} = this.props;
+        const {loggedUserData,updateLoggedUserData} = this.context;
+        const {following_users,id} = loggedUserData;
+        following_users[user_id] = true;
+        const data = await handelFollow(following_users,id);
+        updateLoggedUserData(data);
+        
+        //update followers count of the user you have followed
+        axios.get(`http://localhost:3004/users?user_id=${user_id}`).then(
+            (res)=>{
+                let {follower_count,id} = res.data[0];
+                follower_count++;
+                axios.patch(`http://localhost:3004/users/${id}`,{
+                    follower_count
+                })
+            }
+        ).catch(err=>console.log(err));
+        
+    }
+
+    async  unFollowUser(){
+        const {user_id} = this.props;
+        
+        const {loggedUserData,updateLoggedUserData} = this.context;
+        const {following_users,id} = loggedUserData;
+        delete following_users[user_id];
+        const data = await handelFollow(following_users,id);
+        updateLoggedUserData(data);
+        
+        //update followers count of the user you have followed
+        axios.get(`http://localhost:3004/users?user_id=${user_id}`).then(
+            (res)=>{
+                let {follower_count,id} = res.data[0];
+                follower_count--;
+                axios.patch(`http://localhost:3004/users/${id}`,{
+                    follower_count
+                })
+            }
+        ).catch(err=>console.log(err));
     }
 
     updateCommentCount(id,commentToAdd){
@@ -77,7 +123,10 @@ class UserPost extends Component {
 
     render() {
         
-        const {likes,post_description,post_img,username} = this.props;
+        const {likes,post_description,post_img,username,user_id} = this.props;
+        const {loggedUserData} = this.context;
+        const {following_users} = loggedUserData;
+        console.log(following_users)
         const {comments,comment_count} = this.state;
         return (
             <div className={styles.post}>
@@ -110,7 +159,9 @@ class UserPost extends Component {
                         onCancel={() => this.setModal2Visible(false)}
                         >
                             <button>Report</button>
-                            <button>Follow</button>
+                            {
+                                following_users[user_id] ? <button onClick={this.unFollowUser}>UnFollow</button> : <button onClick={this.followUser}>Follow</button>
+                            }
                             <button>Go to Post</button>
                             <button>Share to...</button>
                             <button>Copy Link</button>
