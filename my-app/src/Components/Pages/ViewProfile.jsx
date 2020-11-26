@@ -109,7 +109,7 @@ class ViewProfile extends Component {
         const {history} = this.props;
         return (
             <div className="container">
-                <main className="main_container">
+                <main className="main_container" style={{padding:"0"}}>
                     <section className={styles.profile_section}>
                         <div className={styles.profile_header}>
                             {
