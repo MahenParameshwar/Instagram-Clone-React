@@ -189,9 +189,10 @@ class UserPost extends Component {
 
     render() {
         
-        const {post_description,post_img,username,user_id,post_id} = this.props;
+        const {post_description,post_img,username,user_id,post_id,avatar_img} = this.props;
         const {loggedUserData} = this.context;
-        const {following_users,liked_posts,saved_posts,avatar_img} = loggedUserData;
+        const {following_users,liked_posts,saved_posts} = loggedUserData;
+        console.log(avatar_img)
         const {comments,comment_count,likes_count} = this.state;
         return (
             <div className={styles.post}>
@@ -200,7 +201,7 @@ class UserPost extends Component {
                         
                         <Avatar
                         className={styles.post_avatar}
-                        alt={`${username}`}
+                        alt={username}
                         src={avatar_img}
                         />
 
@@ -225,7 +226,7 @@ class UserPost extends Component {
                         >
                             <button>Report</button>
                             {
-                                following_users[user_id] ? <button onClick={this.unFollowUser}>UnFollow</button> : <button onClick={this.followUser}>Follow</button>
+                                following_users[user_id] ? <button style={{color:"red"}} onClick={this.unFollowUser}>UnFollow</button> : <button onClick={this.followUser}>Follow</button>
                             }
                             <button>Go to Post</button>
                             <button>Share to...</button>

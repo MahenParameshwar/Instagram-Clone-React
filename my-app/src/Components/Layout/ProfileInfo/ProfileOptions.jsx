@@ -29,8 +29,8 @@ class ProfileOptions extends Component {
             <>
                 {
                     following_users[user_id] ? 
-                    <button onClick={()=>unFollowUser()}>Unfollow</button> :
-                    <button onClick={()=>followUser()}>Follow</button>
+                    <button className={styles.profile_btn} onClick={()=>unFollowUser()}>Unfollow</button> :
+                    <button className={styles.profile_btn} onClick={()=>followUser()}>Follow</button>
                     
                 }
                             
