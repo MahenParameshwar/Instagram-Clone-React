@@ -1,20 +1,23 @@
-import React, { Component } from 'react';
+import React,{Component} from "react";
 import styles from '../../Styles/viewprofile.module.css'
-class GalleryItem extends Component {
+
+
+class ExploreItem extends Component {
     render() {
-        const {comment_count,likes,post_img} = this.props;
+        console.log(this.props)
         return (
             <div className={styles.gallery_item}>
+                
                 <img 
-                src= {post_img}
+                src={this.props.post_img}
                 className={styles.gallery_img} alt="gallery-pic" />
                 <div className={styles.gallery_item_info}>
                     <ul>
                         <li className="gallery-item-likes">
-                            <i className="fas fa-heart" aria-hidden="true"></i> {likes}
+                            <i className="fas fa-heart" aria-hidden="true"></i> {this.props.likes}
                         </li>
                         <li className="gallery-item-comments">
-                            <i className="fas fa-comment" aria-hidden="true"></i> {comment_count}
+                            <i className="fas fa-comment" aria-hidden="true"></i> 5
                         </li>
                     </ul>
                 </div>
@@ -23,4 +26,5 @@ class GalleryItem extends Component {
     }
 }
 
-export default GalleryItem;
+export {ExploreItem};
+

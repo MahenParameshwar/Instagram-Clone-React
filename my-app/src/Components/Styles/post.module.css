@@ -90,6 +90,8 @@ button.more_button > img {
 
 .user_profile_link{
     position: relative;
+    color:#262626;
+    background: #ffffff;
 }
 
 .user_profile_link::after{
