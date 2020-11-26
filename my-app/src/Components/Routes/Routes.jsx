@@ -3,7 +3,7 @@ import { Switch,Route } from 'react-router-dom';
 import Header from '../Layout/Header/Header';
 import {Login} from "../Pages/Login/Login";
 import {Registration} from "../Pages/Registration"
-import { Explore, Home, Inbox,UploadPost } from '../Pages';
+import { Explore, Home, Inbox,SavedPosts,SingelPost,UploadPost } from '../Pages';
 import ViewProfile from '../Pages/ViewProfile';
 import { PrivateRoute } from './PrivateRoute';
 
@@ -31,11 +31,20 @@ class Routes extends Component {
                         <PrivateRoute path="/explore" exact
                         Component={Explore} />
                         
+                        <PrivateRoute path="/viewpost/:post" exact 
+                        Component={SingelPost} />
+
                         <PrivateRoute path="/viewprofile/:user" exact
                         Component={ViewProfile} />
 
+                        <PrivateRoute path="/savedposts/:user" exact
+                        Component={SavedPosts} />
+                        
+
                         <PrivateRoute path="/uploadPost" exact 
                         Component={UploadPost} />
+
+                        
 
                     </Switch>
             </div>

@@ -1,0 +1,43 @@
+.sp_container{
+    display: flex;
+    width: 100%;
+}
+
+.sp_post_container{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+.sp_img_container{
+    width: 60%;
+    display: flex;
+    align-items: center;
+}
+
+.sp_img_container > img{
+    width: 100%;
+}
+
+.sp_post_top{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.sp_avatar_container{
+    display: flex;
+    align-items: center;
+}
+
+.sp_username{
+    margin-left: 10px;
+}
+
+.sp_comments{
+    margin-top:20px ;
+    flex: 1;
+}
+

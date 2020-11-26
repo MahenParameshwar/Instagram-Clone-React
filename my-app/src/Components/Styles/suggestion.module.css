@@ -2,7 +2,7 @@
     width: 353px;
     height:342px;
     padding: 32px;
-    position: absolute;
+    position: fixed;
 }
 
 .top{

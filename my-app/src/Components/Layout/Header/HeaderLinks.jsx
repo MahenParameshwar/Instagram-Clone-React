@@ -14,7 +14,7 @@ const headerLinks = [
     {
         to:"/explore",
         img_src : "/Images/explore.svg"
-    }
+    },
 ]
 
 
@@ -45,7 +45,7 @@ class HeaderLinks extends Component {
                 }
                 {/*Follow Users*/}
                 <li>
-                    <img src="/Images/heart.svg" className={styles.img_link} alt=""/>
+                    <img src="/Images/unlike.svg" className={styles.img_link} alt=""/>
                 </li>
                 {/*Avatar Pic */}
             </ul>

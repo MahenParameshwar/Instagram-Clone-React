@@ -1,10 +1,11 @@
 import Avatar from '@material-ui/core/Avatar'
 import React, { Component } from 'react';
-import { getPosts,getProfile } from '../../Services';
+import { getPosts,getProfile, handelFollow } from '../../Services';
+import { DataContext } from '../Context/DataContextProvider';
 import { GalleryItem } from '../Layout/Gallery';
 import { ProfileBio, ProfileOptions, ProfileStats } from '../Layout/ProfileInfo';
 import styles from '../Styles/viewprofile.module.css'
-
+import axios from 'axios'
 class ViewProfile extends Component {
 
     constructor(props) {
@@ -14,6 +15,8 @@ class ViewProfile extends Component {
             posts : [],
             currUser:props.match.params
         }
+        this.unFollowUser = this.unFollowUser.bind(this);
+        this.followUser = this.followUser.bind(this);
     }
 
     async updateUser(){
@@ -26,6 +29,57 @@ class ViewProfile extends Component {
             posts:posts,
             currUser:user
         })
+    }
+
+    async followUser(){
+        const {profileData} = this.state;
+        const {user_id} = profileData;
+        const {loggedUserData,updateLoggedUserData} = this.context;
+        const {following_users,id} = loggedUserData;
+        following_users[user_id] = true;
+        const data = await handelFollow(following_users,id);
+        updateLoggedUserData(data);
+        
+        //update followers count of the user you have followed
+        axios.get(`http://localhost:3004/users?user_id=${user_id}`).then(
+            (res)=>{
+                console.log(res);
+                let {follower_count,id} = res.data[0];
+                follower_count++;
+                axios.patch(`http://localhost:3004/users/${id}`,{
+                    follower_count
+                }).then((res)=>this.setState({
+                    profileData:res.data
+                }))
+            }
+        ).catch(err=>console.log(err));
+        
+    }
+
+    async  unFollowUser(){
+        
+        const {profileData} = this.state;
+        const {user_id} = profileData;
+
+        const {loggedUserData,updateLoggedUserData} = this.context;
+        const {following_users,id} = loggedUserData;
+        delete following_users[user_id];
+        const data = await handelFollow(following_users,id);
+        updateLoggedUserData(data);
+        
+        //update followers count of the user you have followed
+        axios.get(`http://localhost:3004/users?user_id=${user_id}`).then(
+            (res)=>{
+                let {follower_count,id} = res.data[0];
+                follower_count--;
+            
+                axios.patch(`http://localhost:3004/users/${id}`,{
+                    follower_count
+                }).then((res)=>this.setState({
+                    profileData:res.data
+                }))
+            }
+        ).catch(err=>console.log(err));
     }
     
 
@@ -44,6 +98,10 @@ class ViewProfile extends Component {
     render() {
         const {profileData,posts,currUser} = this.state
         const {user} = this.props.match.params;
+        const {loggedUserData} = this.context;
+        const loggedUserName = loggedUserData.username
+        const {following_users} = loggedUserData
+        const {unFollowUser,followUser} = this
         //Logic to render you profile when you are in other profile and you want to view ypur profile
         if(user !== currUser){
             this.updateUser();
@@ -66,9 +124,15 @@ class ViewProfile extends Component {
                                 </div>
                                 
                                 <div className={styles.profile_header_content}>
-                                    <ProfileOptions {...profileData} history={history}/>
+                                    <ProfileOptions {...profileData} 
+                                    history={history} 
+                                    loggedUserName={loggedUserName}
+                                    following_users={following_users}
+                                    unFollowUser={unFollowUser}
+                                    followUser={followUser}
+                                    />
                                     <ProfileStats {...profileData} posts={posts.length}/>
-                                    <ProfileBio {...profileData}  />
+                                    <ProfileBio {...profileData}   />
                                 </div>
                                 
                             </div>
@@ -78,6 +142,7 @@ class ViewProfile extends Component {
 
                         <div className={styles.profile_content}>
                             <div className={styles.profile_body_container}>
+
                                 <div className={styles.gallery}>
                                     {
                                         posts.map((post)=>{
@@ -96,4 +161,5 @@ class ViewProfile extends Component {
     }
 }
 
+ViewProfile.contextType = DataContext;
 export default ViewProfile;
