@@ -21,7 +21,7 @@ class Home extends Component {
     componentDidMount(){
     const {loggedUserData} = this.context;
     const following_users_arr = Object.keys(loggedUserData.following_users);
-    console.log(following_users_arr);
+    
     //Posts Array Requests Url
     const urlArr = following_users_arr
                     .map((id)=>`http://localhost:3004/posts?user_id=${id}`)
@@ -42,7 +42,6 @@ class Home extends Component {
     render() {
         
         const {posts} = this.state;
-        console.log(posts)
         
         return (
             <>
@@ -55,7 +54,7 @@ class Home extends Component {
                             </div>
                             <div className={styles.posts_container}>
                                 {
-                                    posts.map((items)=>items.map(item=><UserPost {...item} key={item.post_id} />))
+                                    posts.map((items)=>items.reverse().map(item=><UserPost {...item} key={item.post_id} />))
                                 }
                             </div>
                         </div>
