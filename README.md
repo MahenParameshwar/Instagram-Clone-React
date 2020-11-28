@@ -1,8 +1,20 @@
 # Instagram-Clone-React
 
 # Getting Started
-  clone the repository, do npm install in Server folder and run it on --port 3004 
+  Clone the repository, Do npm install in Server folder and run it on --port 3004 
 
+# TECH STACK USED:
+   * HTML
+   * CSS
+   * Javascript
+   * React JS
+
+# TECH LIBRARY USED:
+   * React APP
+   * AXIOS
+   * Material UI
+   * antd Design
+   
 # ScreenShots
 
 ## `Home Page`
@@ -17,9 +29,4 @@
 ## `savedPosts Page`
 ![SavedPosts](https://user-images.githubusercontent.com/44022316/100494692-04196680-316a-11eb-8d5b-83f43a7c852e.png)
 
-#Built Using
- * HTML
- * CSS
- * Material UI
- * antd Design
- * React.js
+
