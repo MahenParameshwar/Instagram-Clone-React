@@ -192,7 +192,7 @@ class UserPost extends Component {
         const {post_description,post_img,username,user_id,post_id,avatar_img} = this.props;
         const {loggedUserData} = this.context;
         const {following_users,liked_posts,saved_posts} = loggedUserData;
-        console.log(avatar_img)
+        
         const {comments,comment_count,likes_count} = this.state;
         return (
             <div className={styles.post}>
