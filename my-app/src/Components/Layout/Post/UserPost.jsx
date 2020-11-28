@@ -280,10 +280,14 @@ class UserPost extends Component {
                     </div>
                     {/*Post User and discription */}
                     <div>
-                        <h4 className={styles.post_description}>
+                        {post_description ? 
+                            <h4 className={styles.post_description}>
                             <strong>{`${username}`} : </strong>
                             {`${post_description}`}
-                        </h4>
+                            </h4> : <></>
+                    
+                        }
+                        
                     </div>
                     
                     {/*Post Comments */}

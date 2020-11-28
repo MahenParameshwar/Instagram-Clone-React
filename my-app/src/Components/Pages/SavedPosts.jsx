@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import { DataContext } from '../Context/DataContextProvider';
+import Footer from '../Layout/Footer/Footer';
 import { GalleryItem } from '../Layout/Gallery';
 import { UserPost } from '../Layout/Post';
 import styles from '../Styles/viewprofile.module.css'
@@ -35,7 +36,8 @@ class SavedPosts extends Component {
     render() {
         const {posts} = this.state
         return (
-            <div className="container">
+            <>
+                <div className="container">
                  <main className="main_container">
                 
                      <div className={styles.save_post_container} style={{marginTop:"30px"}}>
@@ -50,6 +52,9 @@ class SavedPosts extends Component {
                      </div>
                 </main>
             </div>
+            <Footer />
+            </>
+            
         );
     }
 }

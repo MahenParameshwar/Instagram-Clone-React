@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Footer extends Component {
     render() {
         return (
-            <div className="footer">
+            <div className="footer container">
             <p>
                 <a href="https://www.instagram.com/about/us/">ABOUT US</a>
                 <a href="https://help.instagram.com/">SUPPORT</a>
@@ -16,7 +16,7 @@ class Footer extends Component {
                 <a href="https://www.instagram.com/directory/profiles/">PROFILES</a>
                 <a href="https://www.instagram.com/directory/hashtags/">HASHTAGS</a>
                 <a href="">LANGUAGE</a>
-                <span>© 2019 INSTAGRAM</span>
+                <span>© 2020 INSTAGRAM</span>
             </p>
             </div>
         );

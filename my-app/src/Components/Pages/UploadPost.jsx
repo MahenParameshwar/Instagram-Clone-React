@@ -68,7 +68,7 @@ class UploadPost extends Component{
                        </div>
                    </div>
                    <div className={styles.row}>
-                      <input className ={styles.submit} onClick={this.success}  type="submit" value="submit"/>
+                      <input className ={styles.submit} onClick={this.success}  type="submit" value="Upload"/>
                    </div>
                </form>
                {

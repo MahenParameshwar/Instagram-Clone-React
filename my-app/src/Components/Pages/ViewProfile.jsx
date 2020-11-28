@@ -6,6 +6,7 @@ import { GalleryItem } from '../Layout/Gallery';
 import { ProfileBio, ProfileOptions, ProfileStats } from '../Layout/ProfileInfo';
 import styles from '../Styles/viewprofile.module.css'
 import axios from 'axios'
+import Footer from '../Layout/Footer/Footer';
 class ViewProfile extends Component {
 
     constructor(props) {
@@ -108,6 +109,7 @@ class ViewProfile extends Component {
         }
         const {history} = this.props;
         return (
+            <>
             <div className="container">
                 <main className="main_container" style={{padding:"0"}}>
                     <section className={styles.profile_section}>
@@ -156,7 +158,10 @@ class ViewProfile extends Component {
                         </div>
                     </section>
                 </main>
+                
             </div>
+            <Footer />
+            </>
         );
     }
 }
