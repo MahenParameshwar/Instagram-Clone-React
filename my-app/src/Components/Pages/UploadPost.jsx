@@ -13,14 +13,34 @@ class UploadPost extends Component{
        }
        this.photo = React.createRef()
    }
-   handelChange = (e)=>{
+   handelChange = async (e)=>{
        const {name,value,type} = e.target;
-       const val = (type==='file')?URL.createObjectURL(e.target.files[0])
+       const val = (type==='file')?await this.convertBase64(e.target.files[0])
                    :value;
+    console.log(val)
        this.setState({
            [name]:val
        })
    }
+
+   convertBase64 = (file)=>{
+      return new Promise((resolve,reject)=>{
+
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(file);
+
+        fileReader.onload = () =>{
+          resolve(fileReader.result)
+        }
+
+        fileReader.onerror = (error=>{
+          reject(error);
+        })
+
+      })
+    }
+
+   
    handelSubmit = (e)=>{
        e.preventDefault();
        const {description,imgSrc} = this.state;

@@ -21,6 +21,7 @@ class DataContextProvider extends Component {
         this.addUserData = this.addUserData.bind(this);
         this.checkEmail = this.checkEmail.bind(this);
         this.handelLogOut = this.handelLogOut.bind(this);
+        this.reloadUsers = this.reloadUsers.bind(this);
     }
 
     updateLoggedUserData(data){
@@ -89,7 +90,7 @@ class DataContextProvider extends Component {
     }
 
     addUserData(payload) {
-        console.log(payload)
+      
         let { isLoading, error } = this.state;
         let {
             user_id,
@@ -110,7 +111,7 @@ class DataContextProvider extends Component {
             isLoading: true,
         });
 
-        axios
+      axios
             .post("https://instagram-mock-server.herokuapp.com/users", {
                 user_id,
                 email,
@@ -129,7 +130,7 @@ class DataContextProvider extends Component {
                     isLoading: false,
                     error: false,
                 });
-                console.log(res);
+               this.reloadUsers(res.data)
             })
             .catch((err) => {
                 this.setState({
@@ -164,11 +165,17 @@ class DataContextProvider extends Component {
             );
     }
 
+   reloadUsers(user){
+       this.setState({
+           usersData:[...this.state.usersData,user]
+       })
+   }
+
     render() {
         //remove userdata and add logedUserData
         let { isAuth, error, isLoading,regUser,loggedUserData,usersData} = this.state;
         
-        let { authenticateUser, addUserData ,checkEmail,handelLogOut,updateLoggedUserData} = this;
+        let { authenticateUser, addUserData ,checkEmail,handelLogOut,updateLoggedUserData,reloadUsers} = this;
         let value = { authenticateUser, 
                         addUserData,
                         checkEmail, 
@@ -179,6 +186,7 @@ class DataContextProvider extends Component {
                         usersData,
                         updateLoggedUserData,
                         handelLogOut,
+                        reloadUsers,
                         loggedUserData,
                     };
         return (

@@ -12,11 +12,11 @@ class Registration extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: "",
-            username: "",
-            password: "",
+            email: "test123@gmail.com",
+            username: "test",
+            password: "123",
             checkmail:false,
-            fullName:""
+            fullName:"Test Test"
         };
     }
 
@@ -27,13 +27,13 @@ class Registration extends Component {
         });
     };
 
-    handleSubmit = (e) => {
+    handleSubmit = async  (e) => {
         e.preventDefault();
         let { email, username, password ,checkmail,fullName} = this.state;
         
-        let { addUserData ,checkEmail} = this.context;
+        let { addUserData ,checkEmail,  reloadUsers} = this.context;
         let out = checkEmail(email)   //check email already exists or not if exists redirects to login page
-        console.log(out,"in re");
+        
         this.setState({
             checkmail:out
         })
@@ -58,7 +58,8 @@ class Registration extends Component {
             };
     
             addUserData(payload); // adding registred user data to our database
-            console.log(checkmail,"W");
+           
+            
             let {history} = this.props;
             history.push("/")
             
