@@ -4,10 +4,17 @@
   Clone the repository, Do npm install in Server folder and run it on --port 3004 
 
 # TECH STACK USED:
-   * HTML
-   * CSS
-   * Javascript
-   * React JS
+ * Html
+ * Css
+ * Javascript
+ * react
+ * git
+
+  <code><img height="40" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/html/html.png"></code>
+  <code><img height="40" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/css/css.png"></code>
+  <code><img height="40" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/javascript.png"></code>
+  <code><img height="40" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/react/react.png"></code>
+  <code><img height="40" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/git/git.png"></code>
 
 # TECH LIBRARY USED:
    * React APP
@@ -15,6 +22,11 @@
    * Material UI
    * antd Design
    
+
+# demo:
+ ![gif](./images/instagram.gif)
+
+ 
 # ScreenShots
 
 ## `Home Page`
