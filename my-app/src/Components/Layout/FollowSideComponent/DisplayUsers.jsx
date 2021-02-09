@@ -23,11 +23,11 @@ class DisplayUsers extends Component {
         updateLoggedUserData(data);
         
         //update followers count of the user you have followed
-        axios.get(`http://localhost:3004/users?user_id=${user_id}`).then(
+        axios.get(`https://instagram-mock-server.herokuapp.com/users?user_id=${user_id}`).then(
             (res)=>{
                 let {follower_count,id} = res.data[0];
                 follower_count++;
-                axios.patch(`http://localhost:3004/users/${id}`,{
+                axios.patch(`https://instagram-mock-server.herokuapp.com/users/${id}`,{
                     follower_count
                 })
             }
@@ -45,11 +45,11 @@ class DisplayUsers extends Component {
         updateLoggedUserData(data);
         
         //update followers count of the user you have followed
-        axios.get(`http://localhost:3004/users?user_id=${user_id}`).then(
+        axios.get(`https://instagram-mock-server.herokuapp.com/users?user_id=${user_id}`).then(
             (res)=>{
                 let {follower_count,id} = res.data[0];
                 follower_count--;
-                axios.patch(`http://localhost:3004/users/${id}`,{
+                axios.patch(`https://instagram-mock-server.herokuapp.com/users/${id}`,{
                     follower_count
                 })
             }

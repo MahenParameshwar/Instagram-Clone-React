@@ -65,7 +65,7 @@ class UserPost extends Component {
         
         const {likes_count} = this.state
         const newLikecount = likes_count + 1;
-        axios.patch(`http://localhost:3004/posts/${postIdPatch}`,{
+        axios.patch(`https://instagram-mock-server.herokuapp.com/posts/${postIdPatch}`,{
             likes : newLikecount
         }).then((res)=>{
             this.setState({
@@ -86,7 +86,7 @@ class UserPost extends Component {
         
         const {likes_count} = this.state
         const newLikecount = likes_count - 1;
-        axios.patch(`http://localhost:3004/posts/${postIdPatch}`,{
+        axios.patch(`https://instagram-mock-server.herokuapp.com/posts/${postIdPatch}`,{
             likes : newLikecount
         }).then((res)=>{
             this.setState({
@@ -109,11 +109,11 @@ class UserPost extends Component {
         updateLoggedUserData(data);
         
         //update followers count of the user you have followed
-        axios.get(`http://localhost:3004/users?user_id=${user_id}`).then(
+        axios.get(`https://instagram-mock-server.herokuapp.com/users?user_id=${user_id}`).then(
             (res)=>{
                 let {follower_count,id} = res.data[0];
                 follower_count++;
-                axios.patch(`http://localhost:3004/users/${id}`,{
+                axios.patch(`https://instagram-mock-server.herokuapp.com/users/${id}`,{
                     follower_count
                 })
             }
@@ -131,11 +131,11 @@ class UserPost extends Component {
         updateLoggedUserData(data);
         
         //update followers count of the user you have followed
-        axios.get(`http://localhost:3004/users?user_id=${user_id}`).then(
+        axios.get(`https://instagram-mock-server.herokuapp.com/users?user_id=${user_id}`).then(
             (res)=>{
                 let {follower_count,id} = res.data[0];
                 follower_count--;
-                axios.patch(`http://localhost:3004/users/${id}`,{
+                axios.patch(`https://instagram-mock-server.herokuapp.com/users/${id}`,{
                     follower_count
                 })
             }
@@ -145,7 +145,7 @@ class UserPost extends Component {
     updateCommentCount(id,commentToAdd){
         const {comment_count,comments} = this.state
         const newCount = comment_count+1;
-        axios.patch(`http://localhost:3004/posts/${id}`,{
+        axios.patch(`https://instagram-mock-server.herokuapp.com/posts/${id}`,{
             comment_count : newCount
         }).then((res)=>{
             this.setState({
@@ -163,7 +163,7 @@ class UserPost extends Component {
         const {post_id,id} = this.props;
         console.log(comment,username,user_id,post_id)
 
-        axios.post(`http://localhost:3004/comments`,
+        axios.post(`https://instagram-mock-server.herokuapp.com/comments`,
                     {
                         user_id,
                         username,
@@ -179,7 +179,7 @@ class UserPost extends Component {
     //on mounting fetch all the comments of the post
     componentDidMount(){
         const {post_id} = this.props;
-        axios.get(`http://localhost:3004/comments?post_id=${post_id}`)
+        axios.get(`https://instagram-mock-server.herokuapp.com/comments?post_id=${post_id}`)
         .then(
             res => this.setState({
                 comments:res.data

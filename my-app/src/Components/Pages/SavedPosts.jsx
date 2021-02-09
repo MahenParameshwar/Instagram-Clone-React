@@ -21,7 +21,7 @@ class SavedPosts extends Component {
         console.log(posts_arr);
     //Posts Array Requests Url
     const urlArr = posts_arr
-                    .map((id)=>`http://localhost:3004/posts?post_id=${id}`)
+                    .map((id)=>`https://instagram-mock-server.herokuapp.com/posts?post_id=${id}`)
     
     const requests = urlArr.map((url) => fetch(url).then((res)=>res.json()).then(res=>res[0]));
     

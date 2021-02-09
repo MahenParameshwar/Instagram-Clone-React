@@ -111,7 +111,7 @@ class DataContextProvider extends Component {
         });
 
         axios
-            .post("http://localhost:3004/users", {
+            .post("https://instagram-mock-server.herokuapp.com/users", {
                 user_id,
                 email,
                 username,
@@ -145,7 +145,7 @@ class DataContextProvider extends Component {
         });
 
         axios
-            .get("http://localhost:3004/users")
+            .get("https://instagram-mock-server.herokuapp.com/users")
 
             .then((res) => {
                 

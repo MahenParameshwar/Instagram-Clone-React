@@ -40,7 +40,7 @@ class UserSingelPost extends Component {
     updateComment(id,commentToAdd){
         const {comment_count,comments} = this.state
         const newCount = comment_count+1;
-        axios.patch(`http://localhost:3004/posts/${id}`,{
+        axios.patch(`https://instagram-mock-server.herokuapp.com/posts/${id}`,{
             comment_count : newCount
         }).then((res)=>{
             this.setState({
@@ -58,7 +58,7 @@ class UserSingelPost extends Component {
         
         console.log(comment,username,user_id,post_id)
 
-        axios.post(`http://localhost:3004/comments`,
+        axios.post(`https://instagram-mock-server.herokuapp.com/comments`,
                     {
                         user_id,
                         username,
@@ -83,7 +83,7 @@ class UserSingelPost extends Component {
         
         const {likes_count} = this.state
         const newLikecount = likes_count + 1;
-        axios.patch(`http://localhost:3004/posts/${postIdPatch}`,{
+        axios.patch(`https://instagram-mock-server.herokuapp.com/posts/${postIdPatch}`,{
             likes : newLikecount
         }).then((res)=>{
             this.setState({
@@ -105,7 +105,7 @@ class UserSingelPost extends Component {
         
         const {likes_count} = this.state
         const newLikecount = likes_count - 1;
-        axios.patch(`http://localhost:3004/posts/${postIdPatch}`,{
+        axios.patch(`https://instagram-mock-server.herokuapp.com/posts/${postIdPatch}`,{
             likes : newLikecount
         }).then((res)=>{
             this.setState({
@@ -139,7 +139,7 @@ class UserSingelPost extends Component {
 
     componentDidMount(){
         const {post_id} = this.props;
-        axios.get(`http://localhost:3004/posts?post_id=${post_id}`)
+        axios.get(`https://instagram-mock-server.herokuapp.com/posts?post_id=${post_id}`)
         .then(res=>
             this.setState({
                 post:res.data[0],
@@ -149,7 +149,7 @@ class UserSingelPost extends Component {
                 username:res.data[0].username
             })
         )
-        axios.get(`http://localhost:3004/comments?post_id=${post_id}`)
+        axios.get(`https://instagram-mock-server.herokuapp.com/comments?post_id=${post_id}`)
         .then(
             res => this.setState({
                 comments:res.data

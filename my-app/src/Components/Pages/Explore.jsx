@@ -24,7 +24,7 @@ class Explore extends Component {
     
    
     
-    axios.get(`http://localhost:3004/posts`)
+    axios.get(`https://instagram-mock-server.herokuapp.com/posts`)
     .then((res)=>{
         this.setState({
             posts:res.data

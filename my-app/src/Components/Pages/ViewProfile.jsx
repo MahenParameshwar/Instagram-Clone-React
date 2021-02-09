@@ -22,9 +22,9 @@ class ViewProfile extends Component {
 
     async updateUser(){
         const {user} = this.props.match.params;
-        const profileData = await getProfile(`http://localhost:3004/users?username=${user}`);
+        const profileData = await getProfile(`https://instagram-mock-server.herokuapp.com/users?username=${user}`);
         
-        const posts = await getPosts(`http://localhost:3004/posts?username=${user}`)
+        const posts = await getPosts(`https://instagram-mock-server.herokuapp.com/posts?username=${user}`)
         this.setState({
             profileData:profileData[0],
             posts:posts,
@@ -42,12 +42,12 @@ class ViewProfile extends Component {
         updateLoggedUserData(data);
         
         //update followers count of the user you have followed
-        axios.get(`http://localhost:3004/users?user_id=${user_id}`).then(
+        axios.get(`https://instagram-mock-server.herokuapp.com/users?user_id=${user_id}`).then(
             (res)=>{
                 console.log(res);
                 let {follower_count,id} = res.data[0];
                 follower_count++;
-                axios.patch(`http://localhost:3004/users/${id}`,{
+                axios.patch(`https://instagram-mock-server.herokuapp.com/users/${id}`,{
                     follower_count
                 }).then((res)=>this.setState({
                     profileData:res.data
@@ -69,12 +69,12 @@ class ViewProfile extends Component {
         updateLoggedUserData(data);
         
         //update followers count of the user you have followed
-        axios.get(`http://localhost:3004/users?user_id=${user_id}`).then(
+        axios.get(`https://instagram-mock-server.herokuapp.com/users?user_id=${user_id}`).then(
             (res)=>{
                 let {follower_count,id} = res.data[0];
                 follower_count--;
             
-                axios.patch(`http://localhost:3004/users/${id}`,{
+                axios.patch(`https://instagram-mock-server.herokuapp.com/users/${id}`,{
                     follower_count
                 }).then((res)=>this.setState({
                     profileData:res.data
@@ -87,9 +87,9 @@ class ViewProfile extends Component {
     async componentDidMount(){
 
         const {user} = this.props.match.params;
-        const profileData = await getProfile(`http://localhost:3004/users?username=${user}`);
+        const profileData = await getProfile(`https://instagram-mock-server.herokuapp.com/users?username=${user}`);
         
-        const posts = await getPosts(`http://localhost:3004/posts?username=${user}`)
+        const posts = await getPosts(`https://instagram-mock-server.herokuapp.com/posts?username=${user}`)
         this.setState({
             profileData:profileData[0],
             posts:posts

@@ -26,7 +26,7 @@ class UploadPost extends Component{
        const {description,imgSrc} = this.state;
        const {loggedUserData} = this.context
        const {user_id,username,avatar_img} = loggedUserData;
-       createPost('http://localhost:3004/posts',{
+       createPost('https://instagram-mock-server.herokuapp.com/posts',{
                post_id:uuid(),
                likes:0,
                comment_count:0,
