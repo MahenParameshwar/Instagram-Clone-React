@@ -1,7 +1,7 @@
 # Instagram-Clone-React
 
 # Getting Started
-  Clone the repository, Do npm install in Server folder and run it on --port 3004 
+  Clone the repository, and run the app using npm run start
 
 # TECH STACK USED:
  * Html
